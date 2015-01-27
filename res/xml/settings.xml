@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="#000000">
+	<PreferenceCategory android:title="Audible Alarms">
+
+	<CheckBoxPreference android:key="alarm"
+		android:title="@string/alarm_title" android:summary="@string/alarm_summary"
+		android:defaultValue="true" />
+	<CheckBoxPreference android:key="breakAlertRing"
+		android:title="@string/breakring_title" android:summary="@string/breakring_summary"
+		android:defaultValue="true" />
+</PreferenceCategory>
+	<PreferenceCategory android:title="Vibration Alarms">
+		<CheckBoxPreference android:key="vibrate"
+			android:title="@string/vib_title" android:summary="@string/vib_summary"
+			android:defaultValue="true" />
+		<CheckBoxPreference android:key="breakAlertVibrate"
+			android:title="@string/breakvib_title" android:summary="@string/breakvib_summary"
+			android:defaultValue="true" />
+	</PreferenceCategory>
+ 
+</PreferenceScreen>
+ 
+   

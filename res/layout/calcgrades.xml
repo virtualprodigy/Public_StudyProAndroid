@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/blue_background"
+    android:orientation="vertical"
+    android:textColor="#000000" >
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        
+        android:orientation="vertical"
+        
+        android:textColor="#000000" >
+
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/scrollgrades"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/gradebuttons"
+            android:layout_alignParentTop="true"
+     
+            android:fadeScrollbars="false"
+            android:orientation="vertical"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:textColor="#000000" >
+ <!-- the fadescrollbar equal to false actually works not the always visible -->
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                
+                android:orientation="vertical"
+                android:textColor="#000000" >
+
+                <Spinner
+                    android:id="@+id/spinGrade"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:prompt="@string/grade_style" >
+                </Spinner>
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/spinGrade"
+                    android:paddingLeft="10dp"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textView1"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/textView1"
+                    android:paddingRight="10dp"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/textView1"
+                    android:layout_below="@+id/textView1"
+                    android:layout_marginLeft="10dp"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+                <!-- align textview 2 to the center of the text above for neatness -->
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/textView2"
+                    android:layout_below="@+id/textView2"
+                    android:inputType="numberSigned"
+                    android:paddingRight="20dp"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText3"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText1"
+                    android:layout_alignRight="@+id/editText1"
+                    android:layout_below="@+id/editText1"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText4"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText2"
+                    android:layout_alignRight="@+id/editText2"
+                    android:layout_below="@+id/editText2"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText5"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText3"
+                    android:layout_alignRight="@+id/editText3"
+                    android:layout_below="@+id/editText3"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText6"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText4"
+                    android:layout_alignRight="@+id/editText4"
+                    android:layout_below="@+id/editText4"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText7"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText6"
+                    android:layout_alignRight="@+id/editText6"
+                    android:layout_below="@+id/editText6"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText12"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText7"
+                    android:layout_alignRight="@+id/editText7"
+                    android:layout_below="@+id/editText7"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText10"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText7"
+                    android:layout_alignRight="@+id/editText7"
+                    android:layout_below="@+id/editText7"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText8"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText5"
+                    android:layout_alignRight="@+id/editText5"
+                    android:layout_below="@+id/editText5"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText11"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText8"
+                    android:layout_alignRight="@+id/editText8"
+                    android:layout_below="@+id/editText8"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText111"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText11"
+                    android:layout_alignRight="@+id/editText11"
+                    android:layout_below="@+id/editText11"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editText112"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignLeft="@+id/editText10"
+                    android:layout_alignRight="@+id/editText10"
+                    android:layout_below="@+id/editText10"
+                    android:inputType="numberSigned"
+                    android:singleLine="true"
+                    android:textSize="15dp" >
+                </EditText>
+            </RelativeLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/gradebuttons"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/calcscreenadsview"
+            
+            android:orientation="vertical"
+            android:textColor="#000000" >
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+               
+                android:orientation="vertical"
+                android:textColor="#000000" >
+
+                <Button
+                    android:id="@+id/buttonsave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/buttoncalculate"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignTop="@+id/buttoncalculate"
+                    android:text="@string/buttonsave"
+                    android:textSize="15dp" >
+                </Button>
+ <!-- android:text="Save &amp; add more grades" -->
+
+                <Button
+                    android:id="@+id/buttoncalculate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/infobuttonGradepage"
+                    android:layout_toRightOf="@+id/buttonsave"
+                    android:text="@string/buttoncalculate"
+                    android:textSize="15dp" >
+                </Button>
+
+                <Button
+                    android:id="@+id/infobuttonGradepage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/infobutton" >
+                </Button>
+            </RelativeLayout>
+        </LinearLayout>
+          <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+        android:id="@+id/calcscreenadsview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+        <com.google.ads.AdView
+            android:id="@+id/calcscreenads"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="a14f83aafa7d41a"
+            ads:testDevices="TEST_EMULATOR,TEST_DEVICE_ID"
+            ads:loadAdOnCreate="true" />
+        </LinearLayout>
+    </RelativeLayout>
+  
+</LinearLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.CramSlam.VirtualProdigy"
+    android:versionCode="3"
+    android:versionName="0.1" xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:debuggable="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" 
+        tools:ignore="HardcodedDebugMode">
+        <activity
+            android:name=".Eula"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CramSlam"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!--
+         android:launchMode="singleInstance"
+        android:alwaysRetainTaskState="true"
+        -->
+
+        <activity
+            android:name="timer.StudyTimer"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".settingmenubuttons"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Prefs"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".how"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChangeLog"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name="notes.CramSlamNotesListAdapter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="grades.ExamDates"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".libraries"
+            android:screenOrientation="portrait" />
+        <activity android:name="notes.Modify" />
+        <activity android:name=".NotiBarBreakDisplay" />
+        <!-- without making a seperate layout for landscape the save function wont work, ps to stop rotation for those not allowed to have a landscape copy i think you can copy and paste the prot -->
+        <activity
+            android:name="timer.TimedBreaksreaks"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".About"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="grades.CalcGrade"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.google.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <service
+            android:name="timer.TimerServicemerService"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <receiver
+            android:name=".TickReceive"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.gtech.CramSlam.tick" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".FinishReceive"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.gtech.CramSlam.finish" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+    <!--
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"></uses-permission>
+    <uses-permission android:name="android.permission.READ_CALENDAR"></uses-permission> not till i wanna use the calander
+    -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+</manifest>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView 
+android:id="@+id/notenom"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textSize="35dp"
+    android:textColor="@color/black"
+    /><!--  android:background="#00cc66" android:textColor="#000000" -->

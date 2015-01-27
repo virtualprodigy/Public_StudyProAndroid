@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	
+		
+		<EditText android:id="@+id/title" 
+		  
+			android:layout_height="wrap_content" 
+			android:layout_width="fill_parent"
+			android:background="@drawable/notepad_header"
+			android:textSize="50dp" 
+			android:textColor="@color/black"
+			android:gravity="center_horizontal"/>
+
+
+	
+	<notes.NotepadEditText 
+	android:id="@+id/body"
+	android:cursorVisible="true"
+	 android:layout_width="match_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		android:textColor="@color/black"
+		android:scrollbars="vertical"
+		android:layout_below="@+id/title"
+		android:gravity="top"
+		android:background="#ffff66"
+		android:textSize="45dp" 
+		android:autoLink="all"
+		
+		 />
+	
+	<Button android:id="@+id/confirm" 
+	  android:text="@string/confirm"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/body"
+		
+		/>
+
+</RelativeLayout>

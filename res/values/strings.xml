@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, gtech_CramSlam!</string>
+    <string name="app_name">CramSlam</string>
+    
+    
+    <!-- notes strings -->
+   
+   
+    <string name="appnote_name">CramSlamNotes!</string>
+     <string name="no_notes">No CramSlam Notes</string>
+     <string name="notebutton">New CramSlam Note!!</string>
+      <string name="delete">Remove CramNote</string>
+     <string name="modify_note">Write A Note</string> 
+     
+     
+      
+     <string name="title">Name it</string>  
+     <string name="body">Jot some notes</string>  
+     <string name="confirm">save it</string>  
+     
+     
+     
+     
+	<string name="add">Add CramNote</string>
+   <string name="startbutton">Start Studying</string>
+   <string name="stopbutton">Stop Studying</string>
+   <string name="increase" >More Time</string>
+   <string name="decrease" >Less Time</string>
+   
+<!--    about xml-->
+ <string name="aboutTitle" >CramSlam</string>
+  <string name="appName" >CramSlam</string>
+ <string name="version" >version</string>
+ <string name="companyName" >VIRTUALPRODIGY LLC</string>
+ <string name="licenseStatement">Portions of this application are modifications based on work created and shared by the Android Open Source Project and used according to terms described in the Creative Commons 2.5 Attribution License. http://developer.android.com/resources/tutorials/notepad/index.html</string>
+
+   <!--    alarmvolume xml-->
+ <string name="seektext" >Alarm Volume</string>
+
+ 
+   <!--    calcgrades xml-->
+ <string name="buttonsave" >Add More Grades</string>
+<string name="buttoncalculate" >Calculate Grade</string>
+ 
+ <!--    changelog xml-->
+ <string name="closeChangeLog" >Close</string>
+ 
+  <!--    time xml-->
+ <string name="totaltime" >Select Your Amount Of Study Time</string>
+  
+   <string name="vib_title">Vibrate</string>
+    <string name="vib_summary">Device will vibrate when the timer finishes</string>
+    <string name="alarm_title">Alarm Sound</string>
+    <string name="alarm_summary">Plays an alert sound when the timer finishes</string>
+    
+    <string name="breakvib_title">Vibrate On Break Alert</string>
+    <string name="breakvib_summary">Device will vibrate when break starts/ends</string>
+    <string name="breakring_title">Alarm Sound On Break Alert</string>
+    <string name="breakring_summary">Plays an alert sound when break starts/ends</string>
+   
+   <string name="settings_label">Settings...</string>
+   <string name="settings_shortcut">s</string>
+   <string name="exit_label">Exit...</string>
+   <string name="exit_shortcut">e</string>
+   
+   <string name="weighted">Weighted Grade</string>
+   <string name="un_weighted">Unweighted Grade</string>
+   
+   
+    <!-- others strings -->
+    
+    
+    <string name="eula">
+        
+THE END-USER LICENSE AGREEMENT FOR VIRTUALPRODIGYLLC\’s CRAMSLAM MOBILE APP. IMPORTANT NOTICE, PLEASE READ THE TERMS AND CONDITIONS OF THIS LICENSE AGREEMENT CAREFULLY BEFORE CONTINUING WITH THIS PROGRAM USE: VIRTUALPRODIGY\’s  End-User License Agreement ("EULA") is a legal agreement between you (either an individual or a single entity) and VIRTUALPRODIGY LLC for  VIRTUALPRODIGY LLC\’s software product(s) identified above which may include associated software components, media, printed materials, and "online" or electronic documentation ("SOFTWARE PRODUCT"). By installing, copying, or otherwise using the VIRTUALPRODIGY LLC SOFTWARE, you agree to be bound by the terms of this EULA. This license agreement represents the entire agreement concerning the program between you and VIRTUALPRODIGY LLC, (referred to as the "licenser"), and it supersedes any prior proposal, representation, or understanding between the parties. If you are not in agreement with the terms of this EULA, do not install or use this VIRTUALPRODIGY LLC SOFTWARE. 
+The VIRTUALPRODIGY LLC SOFTWARE is protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties. The VIRTUALPRODIGY LLC  SOFTWARE is licensed, not sold. 
+1. GRANT OF LICENSE.  The SOFTWARE PRODUCT is licensed as follows:  a. VIRTUALPRODIGY LLC grants you the non-exclusive, non-transferable, limited right and license to install and use this Application solely and exclusively for your personal use. b. You may not use the Application in any manner that could damage, disable, overburden, or impair the Application (or servers or networks connected to the Application), nor may you use the Application in any manner that could interfere with any other party\’s use and enjoyment of the Application (or servers or networks connected to the Application). c. You agree that you are solely responsible for (and that The Company has no responsibility to you or to any third party for) your use of the Application, any breach of your obligations under the Terms and Conditions, and for the consequences (including any loss or damage which The Company may suffer) of any such breach.
+2. DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS. a. Maintenance of Copyright Notices. You must not remove or alter any copyright notices on any and all copies of the VIRTUALPRODIGY LLC  SOFTWARE. b. Distribution. You may not distribute registered copies of the VIRTUALPRODIGY LLC SOFTWARE to third parties.  c. Prohibition on Reverse Engineering, Decompilation, and Disassembly. You may not reverse engineer, decompile, or disassemble the VIRTUALPRODIGY LLC SOFTWARE, except and only to the extent that such activity is expressly permitted by applicable law notwithstanding this limitation.  d. Rental. You may not rent, lease, or lend the VIRTUALPRODIGY LLC SOFTWARE. e. Support Services. VIRTUALPRODIGY LLC may provide you with support services related to the VIRTUALPRODIGY LLC  SOFTWARE  ("Support Services"). Any supplemental software code provided to you as part of the Support Services shall be considered part of the VIRTUALPRODIGY LLC SOFTWARE and subject to the terms and conditions of this EULA.  f. Compliance with Applicable Laws. You must comply with all applicable laws regarding use of the VIRTUALPRODIGY LLC SOFTWARE.
+3. PROPRIETARY RIGHTS  You acknowledge that 
+a. the Application contains proprietary and confidential information that is protected by applicable intellectual property and other laws.
+ b. VIRTUALPRODIGY LLC and/or third parties own all right, title and interest in and to the Application and content, excluding content provided by you, that may be presented or accessed through the Application, including without limitation all Intellectual Property Rights therein and thereto. “Intellectual Property Rights” means any and all rights existing from time to time under patent law, copyright law, trade secret law, trademark law, unfair competition law, and any and all other proprietary rights, and any and all applications, renewals, extensions and restorations thereof, now or hereafter in force and effect worldwide. You agree that you will not, and will not allow any third party to, 
+1. copy, sell, license, distribute, transfer, modify, adapt, translate, prepare derivative works from, decompile, reverse engineer, disassemble or otherwise attempt to derive source code from the Application or content that may be presented or accessed through the Application for any purpose, unless otherwise permitted, 
+2. take any action to circumvent or defeat the security or content usage rules provided, deployed or enforced by any functionality (including without limitation digital rights management functionality) contained in the Application, 
+3. use the Application to access, copy, transfer, transcode or retransmit content in violation of any law or third party rights, or 
+4. remove, obscure, or alter VIRTUALPRODIGY LLC\’s or any third partys\’ copyright notices, trademarks, or other proprietary rights notices affixed to or contained within or accessed in conjunction with or through the Application.
+
+4. TERMINATION  Without prejudice to any other rights, VIRTUALPRODIGY LLC may terminate this EULA if you fail to comply with the terms and conditions of this EULA. In such event, you must destroy all copies of the SOFTWARE PRODUCT in your possession.
+5. COPYRIGHT All title, including but not limited to copyrights, in and to the SOFTWARE PRODUCT and any copies thereof are owned by VIRTUALPRODIGY LLC or its suppliers. All title and intellectual property rights in and to the content which may be accessed through use of the SOFTWARE PRODUCT is the property of the respective content owner and may be protected by applicable copyright or other intellectual property laws and treaties. This EULA grants you no rights to use such content. All rights not expressly granted are reserved by VIRTUALPRODIGY LLC.
+6. NO WARRANTIES VIRTUALPRODIGY LLC expressly disclaims any warranty for the VIRTUALPRODIGY LLC  SOFTWARE . The VIRTUALPRODIGY LLC SOFTWARE is provided \'As Is\' without any express or implied warranty of any kind, including but not limited to any warranties of merchantability, noninfringement, or fitness of a particular purpose. VIRTUALPRODIGY LLC does not warrant or assume responsibility for the accuracy or completeness of any information, text, graphics, links or other items contained within the SOFTWARE PRODUCT. VIRTUALPRODIGY LLC makes no warranties respecting any harm that may be caused by the transmission of a computer virus, worm, time bomb, logic bomb, or other such computer program. VIRTUALPRODIGY LLC further expressly disclaims any warranty or representation to Authorized Users or to any third party.
+7. INDEMNITY To the maximum extent permitted by law, you agree to defend, indemnify and hold harmless The Company, its affiliates and their respective directors, officers, employees and agents from and against any and all claims, actions, suits or proceedings, as well as any and all losses, liabilities, damages, costs and expenses (including reasonable attorneys fees) arising out of or accruing from your use of the Application, including your downloading, installation, or use of the Application, or your violation of these Terms and Conditions.
+8. LIMITATION OF LIABILITY In no event shall VIRTUALPRODIGY LLC be liable for personal injury, or any incidental, special, indirect or consequential damages whatsoever, including without limitation, any damages (including, without limitation, lost profits, business interruption or any other commercial damages or loses, or lost of data or information) rising out of \'Authorized Users\' or YOUR use of or inability to use the VIRTUALPRODIGY LLC SOFTWARE AND SERVICES OR ANY THIRD PARTY SOFTWRE OR APPLICATION IN CONJUNCTION WITH VIRTUALPRODIGY LLC SOFTWARE, however caused, regardless of the theory of liability (contract, tort, or otherwise) even if VIRTUALPRODIGY LLC has been advised of the possibility of such damages. SOME JURISDICTIONS DO NOT ALLW THE LIMITTION OF LIABILITY FOR PERSONAL INJURY, OR OF INCIDENTAL OR CONSEQUENTIAL DAMAGE, SO THIS LIMITATION MAY NOT APPLY TO YOU. In no event shall VIRTUALPRODIGY LLC\’s total liability to you for all damages (other than as may be required by applicable law in cases involving personal injury) exceed the amount of fifty dollars ($50.00). The foregoing limitations will apply even if the above state remedy fails of its essential purpose. In no event will VIRTUALPRODIGY LLC be liable for loss of data or for indirect, special, incidental, consequential (including lost profit), or other damages based in contract, tort or otherwise. VIRTUALPRODIGY LLC shall have no liability with respect to the content of the VIRTUALPRODIGY LLC SOFTWARE or any part thereof, including but not limited to errors or omissions contained therein, libel, infringements of rights of publicity, privacy, trademark rights, business interruption, personal injury, loss of privacy, moral rights or the disclosure of confidential information. 
+
+9. MISCELLANEOUS a. These Terms and Conditions constitute the entire Agreement between you and The Company relating to the Application and govern your use of the Application, and completely replace any prior or contemporaneous agreements between you and The Company regarding the Application. b. The failure of The Company to exercise or enforce any right or provision of these Terms and Conditions does not constitute a waiver of such right or provision, which will still be available to The Company. c. If any court of law, having the jurisdiction to decide on this matter, rules that any provision of these Terms and Conditions is invalid, then that provision will be removed from the Terms and Conditions without affecting the rest of the Terms and Conditions. The remaining provisions of these Terms and Conditions will continue to be valid and enforceable. d. The rights granted in these Terms and Conditions may not be assigned or transferred by either you or The Company without the prior written approval of the other party. Neither you nor The Company are permitted to delegate their responsibilities or obligations under these Terms and Conditions without the prior written approval of the other party. e. These Terms and Conditions and your relationship with The Company under these Terms and Conditions will be governed by the laws of the State of California without regard to its conflict of laws provisions. You and The Company agree to submit to the exclusive jurisdiction of the courts located within the county of Santa Clara, California to resolve any legal matter arising from these Terms and Conditions. Notwithstanding this, you agree that The Company will still be allowed to apply for injunctive remedies (or an equivalent type of urgent legal relief) in any jurisdiction.
+
+
+
+
+
+
+        
+    </string>
+    
+  
+</resources>
