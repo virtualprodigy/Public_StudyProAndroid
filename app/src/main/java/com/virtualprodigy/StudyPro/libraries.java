@@ -1,4 +1,4 @@
-package com.CramSlam.VirtualProdigy;
+package com.virtualprodigy.studypro;
 
 import android.app.Activity;
 import android.os.Bundle;

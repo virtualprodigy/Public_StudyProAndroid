@@ -42,8 +42,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import com.CramSlam.VirtualProdigy.R;
-import com.CramSlam.VirtualProdigy.settingmenubuttons;
+import com.virtualprodigy.studypro.R;
+import com.virtualprodigy.studypro.settingmenubuttons;
 
 public class CramSlamNotesListAdapter extends ListActivity implements OnClickListener {
 	/** Called when the activity is first created. */

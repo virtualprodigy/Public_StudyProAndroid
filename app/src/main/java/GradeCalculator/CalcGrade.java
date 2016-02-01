@@ -1,14 +1,10 @@
-package grades;
+package gradecalculator;
 
 import java.text.DecimalFormat;
 import java.util.LinkedList;
 
-import com.CramSlam.VirtualProdigy.R;
-import com.CramSlam.VirtualProdigy.settingmenubuttons;
-import com.CramSlam.VirtualProdigy.R.array;
-import com.CramSlam.VirtualProdigy.R.id;
-import com.CramSlam.VirtualProdigy.R.layout;
-import com.CramSlam.VirtualProdigy.R.menu;
+import com.virtualprodigy.studypro.R;
+import com.virtualprodigy.studypro.settingmenubuttons;
 
 import android.app.Activity;
 import android.app.AlertDialog;

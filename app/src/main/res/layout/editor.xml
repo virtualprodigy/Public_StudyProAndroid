@@ -16,7 +16,7 @@
 
 
 	
-	<notes.NotepadEditText 
+	<notes.NotepadEditText
 	android:id="@+id/body"
 	android:cursorVisible="true"
 	 android:layout_width="match_parent"

@@ -1,8 +1,6 @@
-package timer;
+package studytimer;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 

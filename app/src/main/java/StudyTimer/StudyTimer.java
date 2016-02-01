@@ -1,4 +1,4 @@
-package timer;
+package studytimer;
 
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -37,14 +37,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.CramSlam.VirtualProdigy.Prefs;
-import com.CramSlam.VirtualProdigy.R;
-import com.CramSlam.VirtualProdigy.how;
-import com.CramSlam.VirtualProdigy.settingmenubuttons;
-import com.CramSlam.VirtualProdigy.R.drawable;
-import com.CramSlam.VirtualProdigy.R.id;
-import com.CramSlam.VirtualProdigy.R.layout;
-import com.CramSlam.VirtualProdigy.R.menu;
+import com.virtualprodigy.studypro.Prefs;
+import com.virtualprodigy.studypro.R;
+import com.virtualprodigy.studypro.how;
+import com.virtualprodigy.studypro.settingmenubuttons;
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 
@@ -97,7 +93,7 @@ public class StudyTimer extends Activity {
 		displayHow = tutorialPrefs.getInt("showHow", 0);
 		
 		
-		final Intent startTimer = new Intent(this, timer.TimerService.class);
+		final Intent startTimer = new Intent(this, TimerService.class);
 
 		View timer;
 		setContentView(R.layout.time);

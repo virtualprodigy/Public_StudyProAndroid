@@ -1,4 +1,4 @@
-package com.CramSlam.VirtualProdigy;
+package com.virtualprodigy.studypro;
 
 
 import android.app.Activity;
@@ -11,8 +11,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.View;
-import android.widget.Button;
 
 public class Eula extends Activity {
 
@@ -25,7 +23,7 @@ public class Eula extends Activity {
 		super.onCreate(savedInstanceState);
 
 		final Intent startApp = new Intent(this,
-				com.CramSlam.VirtualProdigy.CramSlam.class);
+				com.virtualprodigy.studypro.CramSlam.class);
 
 		packVersion = getPackageVersion();
 		final String eulaKey = " " + packVersion.versionCode + "."
@@ -37,7 +35,7 @@ public class Eula extends Activity {
 
 		if (EulaAccepted == true) {
 			startActivity(new Intent(this,
-					com.CramSlam.VirtualProdigy.CramSlam.class));
+					com.virtualprodigy.studypro.CramSlam.class));
 		}
 
 		if (EulaAccepted == false) {

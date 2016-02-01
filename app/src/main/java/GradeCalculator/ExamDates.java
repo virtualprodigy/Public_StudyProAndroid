@@ -1,4 +1,4 @@
-package grades;
+package gradecalculator;
 
 import android.app.Activity;
 import android.os.Bundle;

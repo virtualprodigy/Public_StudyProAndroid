@@ -1,13 +1,12 @@
-package timer;
+package studytimer;
 
 import java.io.IOException;
 import java.text.NumberFormat;
 
-import com.CramSlam.VirtualProdigy.NotiBarBreakDisplay;
-import com.CramSlam.VirtualProdigy.Prefs;
-import com.CramSlam.VirtualProdigy.R;
-import com.CramSlam.VirtualProdigy.CramSlam;
-import com.CramSlam.VirtualProdigy.R.drawable;
+import com.virtualprodigy.studypro.NotiBarBreakDisplay;
+import com.virtualprodigy.studypro.Prefs;
+import com.virtualprodigy.studypro.R;
+import com.virtualprodigy.studypro.CramSlam;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -133,7 +132,7 @@ public class TimerService extends Service {
 		}
 
         Intent tickIntent = new Intent(getBaseContext(),
-                com.CramSlam.VirtualProdigy.CramSlam.class);
+                com.virtualprodigy.studypro.CramSlam.class);
 
         PendingIntent PendingTickIntent = PendingIntent.getActivity(
                 getBaseContext(), 0, tickIntent, 0);
@@ -225,7 +224,7 @@ public class TimerService extends Service {
 			iggySayVeiwable(cb.breakMessages(time));
 
 			Intent tickIntent = new Intent(getBaseContext(),
-					com.CramSlam.VirtualProdigy.CramSlam.class);
+					com.virtualprodigy.studypro.CramSlam.class);
 
 			PendingIntent PendingTickIntent = PendingIntent.getActivity(
 					getBaseContext(), 0, tickIntent, 0);

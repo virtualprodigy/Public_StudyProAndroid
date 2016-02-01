@@ -1,10 +1,10 @@
-package com.CramSlam.VirtualProdigy;
+package com.virtualprodigy.studypro;
 
 //remember to add a map feature that finds maps specifically, nothing else
 
-import grades.CalcGrade;
+import gradecalculator.CalcGrade;
 import notes.CramSlamNotesListAdapter;
-import timer.StudyTimer;
+import studytimer.StudyTimer;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -37,17 +37,17 @@ public class CramSlam extends TabActivity {
         tabHost.addTab(spec);
      
         intent = new Intent().setClass(this, StudyTimer.class);
-        spec = tabHost.newTabSpec("timer").setIndicator("Study Timer",
+        spec = tabHost.newTabSpec("studytimer").setIndicator("Study Timer",
                           res.getDrawable(R.drawable.ic_tab_studytimer))
                       .setContent(intent);
         tabHost.addTab(spec);
 
         intent = new Intent().setClass(this, CramSlamNotesListAdapter.class);
-        spec = tabHost.newTabSpec("notes").setIndicator("Notes",
+        spec = tabHost.newTabSpec("notes").setIndicator("notes",
                           res.getDrawable(R.drawable.ic_tab_notes))
                       .setContent(intent);
         tabHost.addTab(spec);
-      tabHost.setCurrentTabByTag("timer");
+      tabHost.setCurrentTabByTag("studytimer");
        
 
       /*  tabHost.setCurrentTab(2);//can not add until i feel like dealing with four square

@@ -1,6 +1,6 @@
 package notes;
 
-import com.CramSlam.VirtualProdigy.R;
+import com.virtualprodigy.studypro.R;
 
 import android.content.Context;
 import android.graphics.Canvas;

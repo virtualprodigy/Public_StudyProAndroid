@@ -26,10 +26,7 @@
 package notes;
 
 
-import com.CramSlam.VirtualProdigy.R;
-import com.CramSlam.VirtualProdigy.R.id;
-import com.CramSlam.VirtualProdigy.R.layout;
-import com.CramSlam.VirtualProdigy.R.string;
+import com.virtualprodigy.studypro.R;
 
 import android.app.Activity;
 import android.database.Cursor;
