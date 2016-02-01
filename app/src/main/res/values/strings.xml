@@ -11,6 +11,7 @@
     <string name="nav_item_study_timer">Study Timer</string>
     <string name="nav_item_grade_calculator">Grade Calculator</string>
     <string name="nav_item_notes">Notes</string>
+    <string name="nav_item_info">Info</string>
     <string name="nav_bar_open">navigation bar open</string>
     <string name="nav_bar_close">navigation bar close</string>
 

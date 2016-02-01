@@ -1,6 +1,7 @@
 package com.virtualprodigy.studypro;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import com.virtualprodigy.studypro.Adapters.NavigationDrawerAdapter;
 import com.virtualprodigy.studypro.StudyTimer.StudyTimerFragment;
+import com.virtualprodigy.studypro.Utils.settingmenubuttons;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -108,6 +110,9 @@ public class StudyProActivity extends AppCompatActivity {
                         break;
 
                     case 2:
+                        break;
+                    case 3:
+                        startActivity(new Intent(context, settingmenubuttons.class));
                         break;
 
                 }
