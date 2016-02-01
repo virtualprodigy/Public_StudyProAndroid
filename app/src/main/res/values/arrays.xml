@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- nav drawer and icons-->
+    <string-array name="nav_items">
+        <item>@string/nav_item_study_timer</item>
+        <item>@string/nav_item_notes</item>
+        <item>@string/nav_item_grade_calculator</item>
+    </string-array>
+
+    <array name="nav_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </array>
+
+</resources>

@@ -7,6 +7,13 @@
     <string name="accept">Accept</string>
     <string name="disagree">Disagree</string>
 
+    <!--nav drawer-->
+    <string name="nav_item_study_timer">Study Timer</string>
+    <string name="nav_item_grade_calculator">Grade Calculator</string>
+    <string name="nav_item_notes">Notes</string>
+    <string name="nav_bar_open">navigation bar open</string>
+    <string name="nav_bar_close">navigation bar close</string>
+
     <!-- notes strings -->
     <string name="appnote_name">CramSlamNotes!</string>
     <string name="no_notes">No CramSlam Notes</string>
