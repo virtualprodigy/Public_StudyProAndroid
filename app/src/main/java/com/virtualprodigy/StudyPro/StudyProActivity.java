@@ -54,7 +54,7 @@ public class StudyProActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navDrawer = (ListView) findViewById(R.id.left_drawer);
         fragmentManager = getSupportFragmentManager();
-//        toolbar = getSupportActionBar();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setupNavDrawer();
     }
@@ -66,7 +66,7 @@ public class StudyProActivity extends AppCompatActivity {
 
         navAdapter = new NavigationDrawerAdapter(context, navTitles, navImages);
         navDrawer.setAdapter(navAdapter);
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_bar_open, R.string.nav_bar_close);
+        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,toolbar, R.string.nav_bar_open, R.string.nav_bar_close);
         mDrawerToggle.syncState();
         drawerLayout.setDrawerListener(mDrawerToggle);
 
