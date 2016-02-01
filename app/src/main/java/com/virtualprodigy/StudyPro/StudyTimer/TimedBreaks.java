@@ -1,4 +1,4 @@
-package studytimer;
+package com.virtualprodigy.studypro.StudyTimer;
 
 
 

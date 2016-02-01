@@ -2,9 +2,9 @@ package com.virtualprodigy.studypro;
 
 //remember to add a map feature that finds maps specifically, nothing else
 
-import gradecalculator.CalcGrade;
-import notes.CramSlamNotesListAdapter;
-import studytimer.StudyTimer;
+import com.virtualprodigy.studypro.GradeCalculator.CalcGrade;
+import com.virtualprodigy.studypro.Notes.CramSlamNotesListAdapter;
+import com.virtualprodigy.studypro.StudyTimer.StudyTimer;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;

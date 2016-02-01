@@ -1,4 +1,4 @@
-package gradecalculator;
+package com.virtualprodigy.studypro.GradeCalculator;
 
 import android.app.Activity;
 import android.os.Bundle;

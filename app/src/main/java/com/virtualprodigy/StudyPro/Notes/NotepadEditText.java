@@ -1,4 +1,4 @@
-package notes;
+package com.virtualprodigy.studypro.Notes;
 
 import com.virtualprodigy.studypro.R;
 

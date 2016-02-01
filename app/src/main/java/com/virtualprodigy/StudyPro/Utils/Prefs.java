@@ -1,10 +1,12 @@
-package com.virtualprodigy.studypro;
+package com.virtualprodigy.studypro.Utils;
 
 
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+
+import com.virtualprodigy.studypro.R;
 
 public class Prefs extends PreferenceActivity {
 	

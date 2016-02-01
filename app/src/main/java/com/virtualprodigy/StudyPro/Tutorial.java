@@ -12,7 +12,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class how extends Activity {
+public class Tutorial extends Activity {
 
 Button nextImage,perviousImage,closeButton;
 CheckBox doNotShowAgain;

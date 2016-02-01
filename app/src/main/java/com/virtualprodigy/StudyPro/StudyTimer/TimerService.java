@@ -1,10 +1,10 @@
-package studytimer;
+package com.virtualprodigy.studypro.StudyTimer;
 
 import java.io.IOException;
 import java.text.NumberFormat;
 
 import com.virtualprodigy.studypro.NotiBarBreakDisplay;
-import com.virtualprodigy.studypro.Prefs;
+import com.virtualprodigy.studypro.Utils.Prefs;
 import com.virtualprodigy.studypro.R;
 import com.virtualprodigy.studypro.CramSlam;
 

@@ -1,10 +1,10 @@
-package com.virtualprodigy.studypro;
+package com.virtualprodigy.studypro.LibraryLocator;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class libraries  extends Activity {
+public class Libraries extends Activity {
 //finds local libraries
 	
 	@Override

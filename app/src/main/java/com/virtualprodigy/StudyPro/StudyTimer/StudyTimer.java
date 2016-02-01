@@ -1,4 +1,4 @@
-package studytimer;
+package com.virtualprodigy.studypro.StudyTimer;
 
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -37,10 +37,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.virtualprodigy.studypro.Prefs;
+import com.virtualprodigy.studypro.Utils.Prefs;
 import com.virtualprodigy.studypro.R;
-import com.virtualprodigy.studypro.how;
-import com.virtualprodigy.studypro.settingmenubuttons;
+import com.virtualprodigy.studypro.Tutorial;
+import com.virtualprodigy.studypro.Utils.settingmenubuttons;
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 
@@ -220,7 +220,7 @@ public class StudyTimer extends Activity {
 			@Override
 			public void run() {
 
-				Intent Guide = new Intent(getApplicationContext(), how.class);
+				Intent Guide = new Intent(getApplicationContext(), Tutorial.class);
 				// Guide.putExtra("checkVaule", displayHow);
 				startActivity(Guide);
 

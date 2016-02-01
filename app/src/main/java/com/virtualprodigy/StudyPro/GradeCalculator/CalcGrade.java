@@ -1,10 +1,10 @@
-package gradecalculator;
+package com.virtualprodigy.studypro.GradeCalculator;
 
 import java.text.DecimalFormat;
 import java.util.LinkedList;
 
 import com.virtualprodigy.studypro.R;
-import com.virtualprodigy.studypro.settingmenubuttons;
+import com.virtualprodigy.studypro.Utils.settingmenubuttons;
 
 import android.app.Activity;
 import android.app.AlertDialog;

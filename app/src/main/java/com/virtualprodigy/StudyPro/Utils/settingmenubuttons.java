@@ -1,4 +1,4 @@
-package com.virtualprodigy.studypro;
+package com.virtualprodigy.studypro.Utils;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.virtualprodigy.studypro.About;
+import com.virtualprodigy.studypro.ChangeLog;
+import com.virtualprodigy.studypro.Tutorial;
 
 public class settingmenubuttons extends ListActivity {
 
@@ -36,7 +40,7 @@ public class settingmenubuttons extends ListActivity {
 			}if(position == 2){
 				
 				
-				startActivity(new Intent(this, how.class));
+				startActivity(new Intent(this, Tutorial.class));
 				}if(position==3){
 				Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 				String emailAdd[]={"virtualprodigyllc@gmail.com"};

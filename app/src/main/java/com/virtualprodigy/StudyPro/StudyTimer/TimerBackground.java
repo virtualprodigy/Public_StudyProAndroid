@@ -1,4 +1,4 @@
-package studytimer;
+package com.virtualprodigy.studypro.StudyTimer;
 
 import android.content.Context;
 import android.graphics.Canvas;
