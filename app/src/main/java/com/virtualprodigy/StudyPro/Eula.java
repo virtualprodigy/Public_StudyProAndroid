@@ -11,64 +11,51 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.webkit.WebView;
 
 public class Eula extends Activity {
 
 	private boolean exit;
-	private String EULA_PRE = "EULA ";
 	PackageInfo packVersion = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		final Intent startApp = new Intent(this,
-				com.virtualprodigy.studypro.CramSlam.class);
+		displayEula();
+	}
 
+	private void displayEula() {
 		packVersion = getPackageVersion();
-		final String eulaKey = " " + packVersion.versionCode + "."
-				+ packVersion.versionName + ": " + EULA_PRE;
+		final String eulaKey_Title =getString(R.string.eula) + getString(R.string.app_name) + getString(R.string.version) + packVersion.versionName;
 
-		final SharedPreferences saveEula = PreferenceManager
-				.getDefaultSharedPreferences(this);
-		Boolean EulaAccepted = saveEula.getBoolean(eulaKey, false);
+		final SharedPreferences saveEula = PreferenceManager.getDefaultSharedPreferences(this);
+		Boolean isEulaAccepted = saveEula.getBoolean(eulaKey_Title, false);
 
-		if (EulaAccepted == true) {
-			startActivity(new Intent(this,
-					com.virtualprodigy.studypro.CramSlam.class));
-		}
+		final Intent startApp = new Intent(this, CramSlam.class);
+		if (isEulaAccepted == true) {
+			startActivity(startApp);
+		}else {
+			
+			WebView webView = new WebView(this);
+			webView.loadUrl("file:///android_asset/study_pro_eula.html");
 
-		if (EulaAccepted == false) {
-			String appTitle = this.getString(R.string.app_name) + " Version "
-					+ eulaKey;
-			String eulaStatement = this.getString(R.string.eula);// getApplicationContext()
-																	// has
-																	// issues
-																	// using
-																	// this
-																	// fixes
-																	// window
-																	// manager
-																	// error and
-																	// string
-																	// error
 			AlertDialog.Builder eulaAlert = new AlertDialog.Builder(this)
-					.setTitle(appTitle)
-					.setMessage(eulaStatement)
-					.setPositiveButton("Accept", new Dialog.OnClickListener() {
+					.setTitle(eulaKey_Title)
+					.setView(webView)
+					.setPositiveButton(R.string.accept, new Dialog.OnClickListener() {
 						@Override
-						public void onClick(DialogInterface dialogInterface,
-								int i) {
+						public void onClick(DialogInterface dialogInterface,int i) {
 
 							SharedPreferences.Editor editor = saveEula.edit();
-							editor.putBoolean(eulaKey, true);
+							editor.putBoolean(eulaKey_Title, true);
 							editor.commit();
 							dialogInterface.dismiss();
 							startActivity(new Intent(startApp));
 
 						}
 					})
-					.setNegativeButton("Disagree",
+					.setNegativeButton(R.string.disagree,
 							new Dialog.OnClickListener() {
 
 								@Override
@@ -94,12 +81,6 @@ public class Eula extends Activity {
 
 		}
 		return pack;
-	}
-
-	@Override
-	public void finish() {
-		// TODO Auto-generated method stub
-		super.finish();
 	}
 
 	@Override
