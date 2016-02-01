@@ -26,6 +26,8 @@ import android.os.Vibrator;
 import android.widget.Toast;
 
 public class TimerService extends Service {
+    public static final String EXTRA_TIME_AMOUNT = "amountOfStudyTime";
+    public static final String EXTRA_TIME_LIMIT = "timeLimit";
 	Intent i = new Intent();
 	int time4Count;
 	MyCount count;
@@ -50,7 +52,7 @@ public class TimerService extends Service {
 
 	@Override
 	public void onCreate() {
-		StudyTimer.allowRestartBroadcastMethod(0);
+		StudyTimerFragment.allowRestartBroadcastMethod(0);
 
 		try {
 			
@@ -110,8 +112,8 @@ public class TimerService extends Service {
 		} catch (NullPointerException e) {
 		}
 
-		time4Count = intent.getIntExtra("amountOfStudyTime", 0);
-		cb.getTimeLimit(intent.getIntExtra("timeLimit", 50));
+		time4Count = intent.getIntExtra(EXTRA_TIME_AMOUNT, 0);
+		cb.getTimeLimit(intent.getIntExtra(EXTRA_TIME_LIMIT, 50));
 
 		if (time4Count >= 15000) {
 			count = new MyCount(time4Count, 1000);

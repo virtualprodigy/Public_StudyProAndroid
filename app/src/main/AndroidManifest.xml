@@ -28,7 +28,7 @@
             android:theme="@style/toolbarTheme"/>
 
         <activity
-            android:name=".StudyTimer.StudyTimer"
+            android:name=".StudyTimer.StudyTimerFragment"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
