@@ -11,4 +11,20 @@
     <style name="ActionBarStyle" parent="Widget.AppCompat.Toolbar">
         <item name="android:textColorPrimary">@color/black</item>
     </style>
+
+    <style name="time_digit_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="time_indicator_style" parent="time_digit_style">
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:layout_centerVertical">false</item>
+        <item name="android:layout_margin">0dp</item>
+    </style>
 </resources>
