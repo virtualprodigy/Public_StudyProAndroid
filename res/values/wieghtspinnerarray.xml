@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
-    <string name="grade_style">Choose a grading style</string>
-    <string-array name="style_array">
-        <item>@string/weighted</item>
-        <item>@string/un_weighted</item>
-   </string-array>
-</resources>
