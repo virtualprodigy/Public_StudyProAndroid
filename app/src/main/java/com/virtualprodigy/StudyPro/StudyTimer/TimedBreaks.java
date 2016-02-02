@@ -3,14 +3,14 @@ package com.virtualprodigy.studypro.StudyTimer;
 
 
 
-public class TimedBreaks /*extends Activity*/ {
+public class TimedBreaks {
 	static int timeLimit;
 	static int isBreak;
 	
 
 	
 
-	public void getTimeLimit(int tL) {
+	public void setTimeLimit(int tL) {
 		timeLimit = tL;
 
 	}

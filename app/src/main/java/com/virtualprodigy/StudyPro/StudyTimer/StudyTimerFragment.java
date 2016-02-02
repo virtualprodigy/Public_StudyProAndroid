@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,7 +36,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -46,7 +46,10 @@ import com.virtualprodigy.studypro.Utils.Prefs;
 import com.virtualprodigy.studypro.R;
 import com.virtualprodigy.studypro.Tutorial;
 import com.virtualprodigy.studypro.Utils.settingmenubuttons;
+import com.virtualprodigy.studypro.layouts.TimerDisplayLayout;
 import com.virtualprodigy.studypro.ottoBus.OttoHelper;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -68,7 +71,7 @@ public class StudyTimerFragment extends Fragment {
 	int RESTART_NO = 0;
 	int RESTART_YES = 1;
 	int time4Count;
-	static int timeLimit, allowRestartBroadcast = 0;
+	static int allowRestartBroadcast = 0;
 	private boolean IggyVisiable;
 	private SharedPreferences tutorialPrefs;
 
@@ -78,7 +81,6 @@ public class StudyTimerFragment extends Fragment {
 	private NotificationManager statusNoti;
 
 	int ptotal;
-	TimedBreaks cb = new TimedBreaks();
 	static MediaPlayer notSound = new MediaPlayer();
 
 	double tickTime;
@@ -90,16 +92,15 @@ public class StudyTimerFragment extends Fragment {
 	private Intent startTimerService;
 
 	protected @Bind(R.id.mascotSpeechTV) TextView popText;
-	protected @Bind(R.id.totaltime) TextView totalTimeTV;
 	protected @Bind(R.id.mascotSpeechContainer) ScrollView sV;
-	protected @Bind(R.id.IncreaseButton) Button increase;
-	protected @Bind(R.id.DecreaseButton) Button decrease;
 	protected @Bind(R.id.mascotIcon) ImageView showingIggyReflected;
     protected @Bind(R.id.snackbarContainer) CoordinatorLayout coordinatorLayout;
-
+    protected @Bind(R.id.timerDisplayLayout) TimerDisplayLayout timerDisplay;
     boolean isAlarm = false;
     boolean isTimerRunning = false;
 	View displayEmptyListMessage;
+
+//    @Inject TimedBreaks cb;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -112,7 +113,6 @@ public class StudyTimerFragment extends Fragment {
 		startTimerService = new Intent(fragmentContext, TimerService.class);
 
 		View timer = new TextView(fragmentContext);
-
 
         //displays a tutorial
         displayTutorial();
@@ -181,6 +181,7 @@ public class StudyTimerFragment extends Fragment {
                 tCAble = 0;
             }
             isTimerRunning = false;
+            timerDisplay.setIsTimerStarted(isTimerRunning);
         } catch (Exception e) {
             Log.e(TAG, "Failed to stop the timer", e);
         }
@@ -198,28 +199,17 @@ public class StudyTimerFragment extends Fragment {
 			startTimerService.putExtra(TimerService.EXTRA_TIME_AMOUNT, time4Count);
 			startTimerService.putExtra(TimerService.EXTRA_TIME_LIMIT, timeLimit);
 
-			Thread timeserviceThread = new Thread() {
+			new Thread() {
 				public void run() {
 					fragmentContext.startService(startTimerService);
 				}
-			};
-			timeserviceThread.start();
+			}.start();
             isTimerRunning = true;
+            timerDisplay.setIsTimerStarted(isTimerRunning);
 		} catch (NullPointerException e) {
-			totalTimeTV.setTextSize(25);
-			totalTimeTV.setText(R.string.please_set_time);
+			 Log.e(TAG, "Could not start timer", e);
+            Snackbar.make(coordinatorLayout, R.string.please_select_time, Snackbar.LENGTH_SHORT).show();
 		}
-	}
-
-	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-        //TODO use this code for the new start and stop buttons
-		//start and pause button
-//		addNewMemoirFAB.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View v) {
-//			}
-//		});
 	}
 
 	@Override
@@ -324,6 +314,7 @@ public class StudyTimerFragment extends Fragment {
 			if (startVis == false) {
 				try {
 					isTimerRunning = true;
+                    timerDisplay.setIsTimerStarted(isTimerRunning);
 					tCAble = 1;
 				} catch (Exception e) {
 				}
@@ -334,25 +325,8 @@ public class StudyTimerFragment extends Fragment {
             nf.setMinimumIntegerDigits(2);
 			// seconds
 
-			iggySayVeiwable(cb.breakMessages(tickTime));
-
-            totalTimeTV.setTextSize(37);
-			if (tickTime % 2 == 0) {
-                totalTimeTV.setText(nf
-						.format((int) (tickTime / 3600))
-						+ "   "
-						+ nf.format((int) (tickTime % 3600) / 60)
-						+ "   "
-						+ nf.format((int) tickTime % 60));
-
-			} else {
-                totalTimeTV.setText(nf
-						.format((int) (tickTime / 3600))
-						+ " :  "
-						+ nf.format((int) (tickTime % 3600) / 60)
-						+ " : "
-						+ nf.format((int) tickTime % 60));
-			}
+			iggySayViewable(cb.breakMessages(tickTime));
+            timerDisplay.setRemainingMS((long) tickTime);
 
 		}
 	}
@@ -367,6 +341,7 @@ public class StudyTimerFragment extends Fragment {
 		public void onReceive(Context context, Intent intent) {
 			try {
                 isTimerRunning = true;
+                timerDisplay.setIsTimerStarted(isTimerRunning);
                 isAlarm = true;
             } catch (Exception e) {
 
@@ -375,7 +350,7 @@ public class StudyTimerFragment extends Fragment {
 			}
 
 			Context c = fragmentContext;
-            totalTimeTV.setText(" Time's up! Please stop the timer. ");
+            Snackbar.make(coordinatorLayout, R.string.time_is_up_message, Snackbar.LENGTH_LONG).show();
 
 			vib = (Vibrator) fragmentContext.getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -383,7 +358,7 @@ public class StudyTimerFragment extends Fragment {
 					200, 200, 200, 500 };
 			// Vibrate for 300 milliseconds
 
-			iggySayVeiwable("Yahoo, we finished studying!!");
+			iggySayViewable("Yahoo, we finished studying!!");
 			try {
 				alarm = new MediaPlayer();
 				alarm.setDataSource(c, RingtoneManager
@@ -425,79 +400,13 @@ public class StudyTimerFragment extends Fragment {
 	}
 
     /**
-     * An awful method....this sets the time limit
-     * @param tC
-     */
-	public void changeTimeLimit(int tC) {
-		//TODO refactor this code..... use an array.xml
-        timeLimit = timeLimit + tC;
-		cb.getTimeLimit(timeLimit);
-		if (tCAble == 1) {
-			return;
-		}
-		if (timeLimit == -1) {
-			timeLimit = 0;
-		}
-		totalTimeTV.setTextSize(30);
-		switch (timeLimit) {
-
-
-
-		case 2:
-            totalTimeTV.setText("1 hour ");
-			time4Count = 3600000;
-
-			break;
-		case 3:
-            totalTimeTV.setText("1 hr 30 mins");
-			time4Count = 5400000;
-
-			break;
-		case 4:
-            totalTimeTV.setText(" 2 hours");
-			time4Count = 7200000;
-
-			break;
-		case 5:
-            totalTimeTV.setText("2 hr 30 mins");
-			time4Count = 9000000;
-
-			break;
-		case 6:
-            totalTimeTV.setText("3 hours");
-			time4Count = 10800000;
-
-			break;
-		case 7:
-            totalTimeTV.setText("3 hrs 30 mins");
-			time4Count = 12600000;
-
-			break;
-		case 8:
-            totalTimeTV.setText("4 hrs ");
-			time4Count = 14400000;
-
-			break;
-		case 9:
-			timeLimit = 1;
-            totalTimeTV.setText("30 mins");
-			time4Count = 1800000;
-			break;
-		default:
-			break;
-
-		}
-
-	}
-
-    /**
      * this method checks if you are on a break or not from the
      * timedbreak class and then the method check if your in the app
      * or not, if you are the message is shown by iggy if not a pop up
      * message is displayed
      * @param iS
      */
-    public void iggySayVeiwable(String iS) {
+    public void iggySayViewable(String iS) {
 
         if (iS.equals("iggy")) {
 

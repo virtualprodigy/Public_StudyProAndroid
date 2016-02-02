@@ -113,7 +113,7 @@ public class TimerService extends Service {
 		}
 
 		time4Count = intent.getIntExtra(EXTRA_TIME_AMOUNT, 0);
-		cb.getTimeLimit(intent.getIntExtra(EXTRA_TIME_LIMIT, 50));
+		cb.setTimeLimit(intent.getIntExtra(EXTRA_TIME_LIMIT, 50));
 
 		if (time4Count >= 15000) {
 			count = new MyCount(time4Count, 1000);
