@@ -16,4 +16,15 @@
         <item>@drawable/infobutton</item>
     </array>
 
+    <!--The values of the timer in 30min increments. 30min - 4hrs-->
+    <string-array name="time_increments">
+        <item>1800000</item>
+        <item>3600000</item>
+        <item>5400000</item>
+        <item>7200000</item>
+        <item>9000000</item>
+        <item>10800000</item>
+        <item>12600000</item>
+        <item>14400000</item>
+    </string-array>
 </resources>

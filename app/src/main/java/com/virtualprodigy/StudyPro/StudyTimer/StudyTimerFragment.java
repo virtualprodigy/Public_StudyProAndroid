@@ -46,6 +46,7 @@ import com.virtualprodigy.studypro.Utils.Prefs;
 import com.virtualprodigy.studypro.R;
 import com.virtualprodigy.studypro.Tutorial;
 import com.virtualprodigy.studypro.Utils.settingmenubuttons;
+import com.virtualprodigy.studypro.ottoBus.OttoHelper;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -224,11 +225,13 @@ public class StudyTimerFragment extends Fragment {
 	@Override
 	public void onAttach(Context context) {
 		super.onAttach(context);
+        OttoHelper.getInstance().register(this);
 	}
 
 	@Override
 	public void onDetach() {
 		super.onDetach();
+        OttoHelper.getInstance().unregister(this);
 	}
 
 	@Override
@@ -325,10 +328,10 @@ public class StudyTimerFragment extends Fragment {
 				} catch (Exception e) {
 				}
 			}
-			NumberFormat nf;
-			nf = NumberFormat.getInstance();
-			nf.setMinimumIntegerDigits(2);
 
+            NumberFormat nf;
+            nf = NumberFormat.getInstance();
+            nf.setMinimumIntegerDigits(2);
 			// seconds
 
 			iggySayVeiwable(cb.breakMessages(tickTime));
@@ -437,17 +440,9 @@ public class StudyTimerFragment extends Fragment {
 		}
 		totalTimeTV.setTextSize(30);
 		switch (timeLimit) {
-		case 0:
-			timeLimit = 8;
 
-            totalTimeTV.setText(" 4 hours ");
-			time4Count = 14400000;
 
-			break;
-		case 1:
-			time4Count = 1800000;
-            totalTimeTV.setText("30 minutes");
-			break;
+
 		case 2:
             totalTimeTV.setText("1 hour ");
 			time4Count = 3600000;

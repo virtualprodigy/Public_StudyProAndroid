@@ -2,16 +2,26 @@ package com.virtualprodigy.studypro.layouts;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.virtualprodigy.studypro.R;
+
+import java.text.NumberFormat;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by virtualprodigyllc on 2/1/16.
@@ -26,6 +36,15 @@ public class TimerDisplayLayout extends RelativeLayout {
     private int arcCircumference;
     private int circleRadius;
     private Point cicrleCoord;
+    private TypedArray timeIncrements;
+    private int currentIncrementIndex = -1;
+    protected @Nullable @Bind(R.id.hourDisplay) TextView hourDisplay;
+    protected @Nullable @Bind(R.id.minuteDisplay) TextView minuteDisplay;
+    protected @Nullable @Bind(R.id.secondDisplay) TextView secondsDisplay;
+    protected @Nullable @Bind(R.id.increaseTimer) Button increaseTimer;
+    protected @Nullable
+    @Bind(R.id.decreaseTimer) Button decreaseTimer;
+
 
     public TimerDisplayLayout(Context context) {
         super(context);
@@ -55,7 +74,7 @@ public class TimerDisplayLayout extends RelativeLayout {
     private void init(Context context) {
         this.context = context;
         this.res = context.getResources();
-
+        ButterKnife.bind(this);
         arcRect = new RectF();
         arcPaint = new Paint();
         arcPaint.setColor(res.getColor(R.color.material_blue));
@@ -64,12 +83,10 @@ public class TimerDisplayLayout extends RelativeLayout {
         arcPaint.setStyle(Paint.Style.STROKE);
 
         circlePaint = new Paint(arcPaint);
-//        circlePaint = new Paint();
-//        circlePaint.setColor(res.getColor(R.color.material_blue));
-//        circlePaint.setAntiAlias(true);
-//        circlePaint.setStrokeWidth(res.getDimension(R.dimen.timer_circle_stroke));
         circlePaint.setStyle(Paint.Style.FILL);
         circleRadius = (int) res.getDimension(R.dimen.timer_circle_radius);
+
+        timeIncrements = res.obtainTypedArray(R.array.time_increments);
         setWillNotDraw(false);
     }
 
@@ -98,11 +115,18 @@ public class TimerDisplayLayout extends RelativeLayout {
     }
 
     @Override
-    protected void dispatchDraw(Canvas canvas) {
-        //calculate the sweepAngle
-        sweepAngle = 180;
+    protected void onDraw(Canvas canvas) {
+        calculateSweepAngle();
         calculateCircleCoordinates();
-        super.dispatchDraw(canvas);
+
+        canvas.drawArc(arcRect, -90, sweepAngle, false, arcPaint);
+        canvas.drawCircle(cicrleCoord.x, cicrleCoord.y, circleRadius, circlePaint);
+//                postInvalidateDelayed(1000);
+        super.onDraw(canvas);
+    }
+
+    private void calculateSweepAngle() {
+        sweepAngle = 180;
     }
 
     /**
@@ -110,21 +134,55 @@ public class TimerDisplayLayout extends RelativeLayout {
      * parametric equation for a circle
      */
     private void calculateCircleCoordinates() {
-        int arcRadius = (arcCircumference/2);
+        int arcRadius = (arcCircumference / 2);
         //remember to convert the degree angle to radians
         //remove 90 degrees from the sweep angle since the that's the factor used to adjust the arc initial drawing point
         int x = (int) ((arcRect.left + arcRadius) + arcRadius * Math.cos(((sweepAngle - 90) * Math.PI / 180F)));
-        int y = (int) Math.abs ( (arcRect.top + arcRadius) + arcRadius * Math.sin(((sweepAngle -90) * Math.PI / 180F)));
-        cicrleCoord = new Point();
-        cicrleCoord.set(x,y);
+        int y = (int) Math.abs((arcRect.top + arcRadius) + arcRadius * Math.sin(((sweepAngle - 90) * Math.PI / 180F)));
+        if (cicrleCoord == null) {
+            cicrleCoord = new Point();
+        }
+        cicrleCoord.set(x, y);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        canvas.drawArc(arcRect, -90, sweepAngle, false, arcPaint);
-        if(cicrleCoord != null)
-        canvas.drawCircle(cicrleCoord.x, cicrleCoord.y, circleRadius, circlePaint);
-//                postInvalidateDelayed(1000);
-        super.onDraw(canvas);
+    /**
+     * This method increases the timer value
+     */
+    @Nullable  @OnClick(R.id.increaseTimer)
+    public void onClickIncreaseTimer(){
+        currentIncrementIndex =+ 1;
+        if (currentIncrementIndex <= timeIncrements.length()){
+            long time = Long.parseLong(timeIncrements.getString(currentIncrementIndex));
+            displayTime(time);
+        }
+
+    }
+
+    /**
+     * This method decreases the timer value
+     */
+    @Nullable @OnClick(R.id.increaseTimer)
+    public void onClickDecreaseTimer(){
+        currentIncrementIndex =- 1;
+        if (currentIncrementIndex >= timeIncrements.length()){
+            long time = Long.parseLong(timeIncrements.getString(currentIncrementIndex));
+            displayTime(time);
+        }
+    }
+
+    /**
+     * Parses the hours, minutes, and seconds from the long time
+     * then displays then to the user
+     * @param time - time in milliseconds
+     */
+    private void displayTime(long time){
+        NumberFormat numberFormat;
+        numberFormat = NumberFormat.getInstance();
+        numberFormat.setMinimumIntegerDigits(2);
+
+        hourDisplay.setText(numberFormat.format((int) (time / 3600)));
+        minuteDisplay.setText(numberFormat.format((int) (time % 3600) / 60));
+        secondsDisplay.setText(numberFormat.format((int) time % 60));
+
     }
 }
