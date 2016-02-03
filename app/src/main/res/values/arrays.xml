@@ -6,12 +6,14 @@
         <item>@string/nav_item_study_timer</item>
         <item>@string/nav_item_notes</item>
         <item>@string/nav_item_grade_calculator</item>
+        <item>@string/nav_item_info</item>
     </string-array>
 
     <array name="nav_icons">
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
+        <item>@drawable/infobutton</item>
     </array>
 
 </resources>

@@ -27,7 +27,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -84,7 +83,6 @@ public class StudyTimerFragment extends Fragment {
 	double tickTime;
 	TickReceive tickR = new TickReceive();
 	FinishReceive finR = new FinishReceive();
-	// Kill kill = new Kill();
 	int TaskId;
 	static int displayTutorial;
 
@@ -93,17 +91,13 @@ public class StudyTimerFragment extends Fragment {
 	protected @Bind(R.id.iggypoptalk) TextView popText;
 	protected @Bind(R.id.totaltime) TextView totalTimeTV;
 	protected @Bind(R.id.scrollTalk) ScrollView sV;
-	protected @Bind(R.id.StartButton) Button start;
-	protected @Bind(R.id.StopButton) Button stop;
-	protected @Bind(R.id.alarmstop) Button alarmButton;
 	protected @Bind(R.id.IncreaseButton) Button increase;
 	protected @Bind(R.id.DecreaseButton) Button decrease;
-	protected @Bind(R.id.infobutton) Button info;
 	protected @Bind(R.id.showiggy) ImageView showingIggyReflected;
+    protected @Bind(R.id.snackbarContainer) CoordinatorLayout coordinatorLayout;
 
-	FloatingActionButton addNewMemoirFAB;
-	CoordinatorLayout coordinatorLayout;
-
+    boolean isAlarm = false;
+    boolean isTimerRunning = false;
 	View displayEmptyListMessage;
 
 	@Override
@@ -118,8 +112,6 @@ public class StudyTimerFragment extends Fragment {
 
 		View timer = new TextView(fragmentContext);
 
-		stop.setVisibility(View.INVISIBLE);
-		alarmButton.setVisibility(View.INVISIBLE);
 
         //displays a tutorial
         displayTutorial();
@@ -150,15 +142,6 @@ public class StudyTimerFragment extends Fragment {
     }
 
     /**
-     * This opens the settings menu
-     */
-    @OnClick(R.id.infobutton)
-    public void onClickInfo() {
-        startActivity(new Intent(fragmentContext, settingmenubuttons.class));
-
-    }
-
-    /**
      * Decreases the study time
      */
     @OnClick(R.id.DecreaseButton)
@@ -181,33 +164,22 @@ public class StudyTimerFragment extends Fragment {
     }
 
     /**
-     * Attempts to stops the alarm when the timer is up
-     */
-    @OnClick(R.id.alarmstop)
-    public void onClickAlarmButton() {
-        try {
-            StudyTimerFragment.alarm.stop();
-            vib.cancel();
-            start.setVisibility(View.VISIBLE);
-            alarmButton.setVisibility(View.INVISIBLE);
-            tCAble = 0;
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to stop the alarm", e);
-        }
-
-    }
-
-    /**
      * Stops the the timer
      */
-    @OnClick(R.id.StopButton)
+    @OnClick(R.id.stopTimerFAB)
     public void onClickStop() {
-        //TODO combine the onCLickStop and onClickAlarmButton when I start developing the new logic
         try {
-            fragmentContext.stopService(startTimerService);
-            start.setVisibility(View.VISIBLE);
-            stop.setVisibility(View.INVISIBLE);
-            tCAble = 0;
+            if (isAlarm) {
+                //the alarm is going off handle
+                StudyTimerFragment.alarm.stop();
+                vib.cancel();
+                tCAble = 0;
+            } else {
+                //the user is stopping the timer early
+                fragmentContext.stopService(startTimerService);
+                tCAble = 0;
+            }
+            isTimerRunning = false;
         } catch (Exception e) {
             Log.e(TAG, "Failed to stop the timer", e);
         }
@@ -216,10 +188,11 @@ public class StudyTimerFragment extends Fragment {
     /**
      * Starts the study timer
      */
-    @OnClick(R.id.StartButton)
+    @OnClick(R.id.startTimerFAB)
     public void onClickStart() {
 		try {
 			//TODO: remove this thread, I believe it can be set in the manifest
+
 			Log.i(TAG, "Starting timer service");
 			startTimerService.putExtra(TimerService.EXTRA_TIME_AMOUNT, time4Count);
 			startTimerService.putExtra(TimerService.EXTRA_TIME_LIMIT, timeLimit);
@@ -230,7 +203,7 @@ public class StudyTimerFragment extends Fragment {
 				}
 			};
 			timeserviceThread.start();
-
+            isTimerRunning = true;
 		} catch (NullPointerException e) {
 			totalTimeTV.setTextSize(25);
 			totalTimeTV.setText(R.string.please_set_time);
@@ -347,8 +320,7 @@ public class StudyTimerFragment extends Fragment {
 			startVis = intent.getBooleanExtra("startVis", true);
 			if (startVis == false) {
 				try {
-					start.setVisibility(View.INVISIBLE);
-					stop.setVisibility(View.VISIBLE);
+					isTimerRunning = true;
 					tCAble = 1;
 				} catch (Exception e) {
 				}
@@ -390,13 +362,10 @@ public class StudyTimerFragment extends Fragment {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-
-
-			// start.setVisibility(View.VISIBLE);
 			try {
-				alarmButton.setVisibility(View.VISIBLE);
-				stop.setVisibility(View.INVISIBLE);
-			} catch (Exception e) {
+                isTimerRunning = true;
+                isAlarm = true;
+            } catch (Exception e) {
 
 			} finally {
 				tCAble = 0;
@@ -634,7 +603,7 @@ public class StudyTimerFragment extends Fragment {
 	}
 
     /**
-     * Draws a reflected images, simialr to something reflected by water
+     * Draws a reflected images, similar to something reflected by water
      * @param imageOriginal
      * @return
      */
