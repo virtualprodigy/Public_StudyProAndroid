@@ -53,6 +53,9 @@
     <string name="breakring_title">Alarm Sound On Break Alert</string>
     <string name="breakring_summary">Plays an alert sound when break starts/ends</string>
 
+    <!--Timed Break Messages-->
+    <string name="study_30_mins"></string>
+
     <!--    about xml-->
     <string name="aboutTitle">CramSlam</string>
     <string name="appName">CramSlam</string>

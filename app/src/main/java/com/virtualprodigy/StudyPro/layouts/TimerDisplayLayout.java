@@ -72,10 +72,6 @@ public class TimerDisplayLayout extends RelativeLayout {
         init(context);
     }
 
-    public TimerDisplayLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(context);
-    }
 
     /**
      * A uniform constructor
@@ -188,6 +184,8 @@ public class TimerDisplayLayout extends RelativeLayout {
 
             long time = Long.parseLong(timeIncrements.getString(currentIncrementIndex));
             displayTime(time);
+            //set the timed breaks
+            timedBreaks.setTimerDuration(time);
         }
     }
 
@@ -206,7 +204,8 @@ public class TimerDisplayLayout extends RelativeLayout {
 
             long time = Long.parseLong(timeIncrements.getString(currentIncrementIndex));
             displayTime(time);
-            timedBreaks.setTimeLimit(timeLimit);
+            //set the timed breaks
+            timedBreaks.setTimerDuration(time);
         }
     }
 

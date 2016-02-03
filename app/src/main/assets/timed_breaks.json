@@ -1,0 +1,273 @@
+{
+    "30": [
+        {
+            "messageAtMin": "29",
+            "isBreak": "false",
+            "message": "Let's study for the full 30 minutes"
+        }
+    ],
+    "60": [
+        {
+            "messageAtMin": "29",
+            "isBreak": "true",
+            "message": "Time for your first break."
+        },
+        {
+            "messageAtMin": "25",
+            "isBreak": "false",
+            "message": "Time to get back to studying./n Maybe you should look over another subject"
+        }
+    ],
+    "90": [
+        {
+            "messageAtMin": "60",
+            "isBreak": "true",
+            "message": "Time for your first break."
+        },
+        {
+            "messageAtMin": "53",
+            "isBreak": "false",
+            "message": "Break's over, if you have another /n subject you should probably take a look at it"
+        },
+        {
+            "messageAtMin": "26",
+            "isBreak": "true",
+            "message": "Let's take a second break"
+        },
+        {
+            "messageAtMin": "21",
+            "isBreak": "false",
+            "message": "Time for the final push. /n Let's Give It Our Best!!"
+        }
+    ],
+    "120": [
+        {
+            "messageAtMin": "90",
+            "isBreak": "true",
+            "message": "Time for your first break."
+        },
+        {
+            "messageAtMin": "80",
+            "isBreak": "false",
+            "message": "Break's over, if you have another /n subject you should probably take a look at it"
+        },
+        {
+            "messageAtMin": "50",
+            "isBreak": "true",
+            "message": "That was a lot of studying, time for another break"
+        },
+        {
+            "messageAtMin": "43",
+            "isBreak": "false",
+            "message": "Break's over, if you have another /n subject you should probably take a look at it"
+        },
+        {
+            "messageAtMin": "20",
+            "isBreak": "true",
+            "message": "Let's take a another break"
+        },
+        {
+            "messageAtMin": "15",
+            "isBreak": "false",
+            "message": "Break's over. After all that studying /n lightly reviewing the work you completed might be best"
+        }
+    ],
+    "150": [
+        {
+            "messageAtMin": "120",
+            "isBreak": "true",
+            "message": "Time for your first break."
+        },
+        {
+            "messageAtMin": "110",
+            "isBreak": "false",
+            "message": "Break's over, if you have another /n subject you should probably take a look at it"
+        },
+        {
+            "messageAtMin": "80",
+            "isBreak": "true",
+            "message": "Let's take a another break"
+        },
+        {
+            "messageAtMin": "70",
+            "isBreak": "false",
+            "message": "Let's get back to studying. /n Do you have another subject you'd like to study instead"
+        },
+        {
+            "messageAtMin": "45",
+            "isBreak": "true",
+            "message": "Let's take a another break"
+        },
+        {
+            "messageAtMin": "35",
+            "isBreak": "false",
+            "message": "Time to get back to the books./n Do you have another subject you'd like to study instead"
+        },
+        {
+            "messageAtMin": "15",
+            "isBreak": "true",
+            "message": "That was a lot of studying, time for another break"
+        },
+        {
+            "messageAtMin": "9",
+            "isBreak": "false",
+            "message": "Break's over, if you have another /n subject you should probably take a look at it"
+        }
+    ],
+    "180": [
+        {
+            "messageAtMin": "150",
+            "isBreak": "true",
+            "message": "Time for your first break."
+        },
+        {
+            "messageAtMin": "140",
+            "isBreak": "false",
+            "message": "Break's over, if you have another /n subject you should probably take a look at it"
+        },
+        {
+            "messageAtMin": "110",
+            "isBreak": "true",
+            "message": "Let's take a another break"
+        },
+        {
+            "messageAtMin": "100",
+            "isBreak": "false",
+            "message": "Let's get back to studying. /n Do you have another subject you'd like to study instead"
+        },
+        {
+            "messageAtMin": "70",
+            "isBreak": "true",
+            "message": "Let's take a another break"
+        },
+        {
+            "messageAtMin": "60",
+            "isBreak": "false",
+            "message": "Time to get back to the books./n Do you have another subject you'd like to study instead"
+        },
+        {
+            "messageAtMin": "30",
+            "isBreak": "true",
+            "message": "That was a lot of studying, time for another break"
+        },
+        {
+            "messageAtMin": "20",
+            "isBreak": "false",
+            "message": "Breaks up!! Why not /n use the last of this time to review the material"
+        }
+    ],
+    "210": [
+        {
+            "messageAtMin": "180",
+            "isBreak": "true",
+            "message": "Time for your first break."
+        },
+        {
+            "messageAtMin": "170",
+            "isBreak": "false",
+            "message": "Breaks Over, if you have another /n  subject maybe you should take a look at it"
+        },
+        {
+            "messageAtMin": "140",
+            "isBreak": "true",
+            "message": "Time for another break "
+        },
+        {
+            "messageAtMin": "130",
+            "isBreak": "false",
+            "message": "Let's get back to studying./n subject maybe you should take a look at it"
+        },
+        {
+            "messageAtMin": "100",
+            "isBreak": "true",
+            "message": "That was alot of studying, let's take a break"
+        },
+        {
+            "messageAtMin": "90",
+            "isBreak": "false",
+            "message": "Let's get back to studying./n If you have another subject maybe you should take a look at it"
+        },
+        {
+            "messageAtMin": "60",
+            "isBreak": "true",
+            "message": "That was a lot of studying, /n let's take a break!!"
+        },
+        {
+            "messageAtMin": "50",
+            "isBreak": "false",
+            "message": "Let's get back to the books. If you have another subject maybe you should take a look at it"
+        },
+        {
+            "messageAtMin": "25",
+            "isBreak": "true",
+            "message": "Let's take a 5 mintue break."
+        },
+        {
+            "messageAtMin": "20",
+            "isBreak": "false",
+            "message": "Let's finish up studying and use the rest of this time for reviewing"
+        }
+    ],
+    "240": [
+        {
+            "messageAtMin": "180",
+            "isBreak": "true",
+            "message": "Time for your first break."
+        },
+        {
+            "messageAtMin": "170",
+            "isBreak": "false",
+            "message": "Breaks Over, if you have another /n  subject you should take a look at it"
+        },
+        {
+            "messageAtMin": "180",
+            "isBreak": "true",
+            "message": "Time for another break "
+        },
+        {
+            "messageAtMin": "170",
+            "isBreak": "false",
+            "message": "Breaks Over, if you have another /n  subject maybe you should take a look at it"
+        },
+        {
+            "messageAtMin": "140",
+            "isBreak": "true",
+            "message": "Time for another break "
+        },
+        {
+            "messageAtMin": "130",
+            "isBreak": "false",
+            "message": "Let's get back to studying./n subject maybe you should take a look at it"
+        },
+        {
+            "messageAtMin": "100",
+            "isBreak": "true",
+            "message": "That was alot of studying, let's take a break"
+        },
+        {
+            "messageAtMin": "90",
+            "isBreak": "false",
+            "message": "Let's get back to studying./n If you have another subject maybe you should take a look at it"
+        },
+        {
+            "messageAtMin": "60",
+            "isBreak": "true",
+            "message": "That was a lot of studying, /n let's take a break!!"
+        },
+        {
+            "messageAtMin": "50",
+            "isBreak": "false",
+            "message": "Let's get back to the books. If you have another subject maybe you should take a look at it"
+        },
+        {
+            "messageAtMin": "25",
+            "isBreak": "true",
+            "message": "Let's take a 5 mintue break."
+        },
+        {
+            "messageAtMin": "20",
+            "isBreak": "false",
+            "message": "Let's finish up studying and use the rest of this time for reviewing"
+        }
+    ]
+}

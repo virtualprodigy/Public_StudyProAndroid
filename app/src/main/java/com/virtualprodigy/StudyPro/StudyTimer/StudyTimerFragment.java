@@ -143,28 +143,6 @@ public class StudyTimerFragment extends Fragment {
     }
 
     /**
-     * Decreases the study time
-     */
-    @OnClick(R.id.DecreaseButton)
-    public void onClickDecrease() {
-        changeTimeLimit(-1);
-    }
-
-    /**
-     * Increases the study time
-     */
-    @OnClick(R.id.IncreaseButton)
-    public void onClickIncrease() {
-        increase.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				changeTimeLimit(1);
-			}
-		});
-    }
-
-    /**
      * Stops the the timer
      */
     @OnClick(R.id.stopTimerFAB)
