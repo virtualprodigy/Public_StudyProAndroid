@@ -41,6 +41,9 @@
     <string name="decrease_time">- 30</string>
     <string name="totaltime">Select Your Amount Of Study Time</string>
     <string name="mascot_description">An image of the app mascot</string>
+    <string name="time_is_up_message">Time's up! Please stop the timer</string>
+    <string name="please_select_time">Please select a time first</string>
+
     <string name="vib_title">Vibrate</string>
     <string name="vib_summary">Device will vibrate when the timer finishes</string>
     <string name="alarm_title">Alarm Sound</string>

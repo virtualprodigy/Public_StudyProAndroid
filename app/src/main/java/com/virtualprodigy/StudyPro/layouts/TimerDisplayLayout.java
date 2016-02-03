@@ -1,5 +1,6 @@
 package com.virtualprodigy.studypro.layouts;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -7,17 +8,21 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.virtualprodigy.studypro.R;
+import com.virtualprodigy.studypro.StudyProApplication;
+import com.virtualprodigy.studypro.StudyTimer.TimedBreaks;
 
 import java.text.NumberFormat;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,8 +32,8 @@ import butterknife.OnClick;
  * Created by virtualprodigyllc on 2/1/16.
  */
 public class TimerDisplayLayout extends RelativeLayout {
+    private final String TAG = this.getClass().getSimpleName();
     private Context context;
-    private Resources res;
     private RectF arcRect;
     private Paint arcPaint;
     private Paint circlePaint;
@@ -38,13 +43,19 @@ public class TimerDisplayLayout extends RelativeLayout {
     private Point cicrleCoord;
     private TypedArray timeIncrements;
     private int currentIncrementIndex = -1;
-    protected @Nullable @Bind(R.id.hourDisplay) TextView hourDisplay;
-    protected @Nullable @Bind(R.id.minuteDisplay) TextView minuteDisplay;
-    protected @Nullable @Bind(R.id.secondDisplay) TextView secondsDisplay;
-    protected @Nullable @Bind(R.id.increaseTimer) Button increaseTimer;
-    protected @Nullable
-    @Bind(R.id.decreaseTimer) Button decreaseTimer;
+    /**This is the total duration of the timer*/
+    private long durationMS = 0;
+    /**This is the current milliseconds on the countdown timer*/
+    private long remainingMS = 0;
+    private boolean isTimerStarted = false;
 
+    protected @Bind(R.id.hourDisplay) TextView hourDisplay;
+    protected @Bind(R.id.minuteDisplay) TextView minuteDisplay;
+    protected @Bind(R.id.secondDisplay) TextView secondsDisplay;
+    protected @Bind(R.id.increaseTimer) Button increaseTimer;
+    protected @Bind(R.id.decreaseTimer) Button decreaseTimer;
+
+    @Inject TimedBreaks timedBreaks;
 
     public TimerDisplayLayout(Context context) {
         super(context);
@@ -69,12 +80,14 @@ public class TimerDisplayLayout extends RelativeLayout {
     /**
      * A uniform constructor
      *
-     * @param context
+     * @param context - context for the view
      */
+    @SuppressWarnings("deprecation")
     private void init(Context context) {
         this.context = context;
-        this.res = context.getResources();
-        ButterKnife.bind(this);
+        Resources res = context.getResources();
+        ((StudyProApplication) ((Activity)context).getApplication()).getComponent().inject(this);
+
         arcRect = new RectF();
         arcPaint = new Paint();
         arcPaint.setColor(res.getColor(R.color.material_blue));
@@ -87,7 +100,15 @@ public class TimerDisplayLayout extends RelativeLayout {
         circleRadius = (int) res.getDimension(R.dimen.timer_circle_radius);
 
         timeIncrements = res.obtainTypedArray(R.array.time_increments);
+
+        arcRect = new RectF();
         setWillNotDraw(false);
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -110,8 +131,7 @@ public class TimerDisplayLayout extends RelativeLayout {
         int top = (screenHeight / 2) - (sqrtBoundMeasure / 2);
         int right = left + sqrtBoundMeasure;
         int bottom = top + sqrtBoundMeasure;
-
-        arcRect = new RectF(left, top, right, bottom);
+        arcRect.set(left, top, right, bottom);
     }
 
     @Override
@@ -125,8 +145,16 @@ public class TimerDisplayLayout extends RelativeLayout {
         super.onDraw(canvas);
     }
 
+    /**
+     * Calculates the sweep angle of the time display arc
+     */
     private void calculateSweepAngle() {
-        sweepAngle = 180;
+        // draw a full circle, timer not started
+        if(!isTimerStarted){
+            sweepAngle = 360;
+        }else {
+            sweepAngle = (int) ((360/durationMS) / remainingMS);
+        }
     }
 
     /**
@@ -148,41 +176,89 @@ public class TimerDisplayLayout extends RelativeLayout {
     /**
      * This method increases the timer value
      */
-    @Nullable  @OnClick(R.id.increaseTimer)
-    public void onClickIncreaseTimer(){
-        currentIncrementIndex =+ 1;
-        if (currentIncrementIndex <= timeIncrements.length()){
+    @OnClick(R.id.increaseTimer)
+    public void onClickIncreaseTimer() {
+        if(!isTimerStarted) {
+            currentIncrementIndex = currentIncrementIndex + 1;
+            Log.d(TAG, "Index " + currentIncrementIndex);
+
+            if (currentIncrementIndex >= timeIncrements.length()) {
+                currentIncrementIndex = 0;
+            }
+
             long time = Long.parseLong(timeIncrements.getString(currentIncrementIndex));
             displayTime(time);
         }
-
     }
 
     /**
      * This method decreases the timer value
      */
-    @Nullable @OnClick(R.id.increaseTimer)
-    public void onClickDecreaseTimer(){
-        currentIncrementIndex =- 1;
-        if (currentIncrementIndex >= timeIncrements.length()){
+    @OnClick(R.id.decreaseTimer)
+    public void onClickDecreaseTimer() {
+        if(!isTimerStarted) {
+            currentIncrementIndex = currentIncrementIndex - 1;
+            Log.d(TAG, "Index " + currentIncrementIndex);
+
+            if (currentIncrementIndex <= 0) {
+                currentIncrementIndex = timeIncrements.length() - 1;
+            }
+
             long time = Long.parseLong(timeIncrements.getString(currentIncrementIndex));
             displayTime(time);
+            timedBreaks.setTimeLimit(timeLimit);
         }
     }
 
     /**
      * Parses the hours, minutes, and seconds from the long time
      * then displays then to the user
+     *
      * @param time - time in milliseconds
      */
-    private void displayTime(long time){
+    private void displayTime(long time) {
+        Log.d(TAG, "TIME " + time);
+        durationMS = time;
         NumberFormat numberFormat;
         numberFormat = NumberFormat.getInstance();
         numberFormat.setMinimumIntegerDigits(2);
 
-        hourDisplay.setText(numberFormat.format((int) (time / 3600)));
-        minuteDisplay.setText(numberFormat.format((int) (time % 3600) / 60));
-        secondsDisplay.setText(numberFormat.format((int) time % 60));
+        hourDisplay.setText(numberFormat.format((int) (time / 3600000)));
+        minuteDisplay.setText(numberFormat.format((int) (time % 3600000) / 60000));
+        secondsDisplay.setText(numberFormat.format((int) ((time % 3600000) % 60000) / 1000));
+    }
+
+    /**
+     * This method sets the current milliseconds and then flags
+     * for an invalid to update the animations
+     *
+     * @param milliseconds - the current milliseconds of the countdown
+     */
+    public void setRemainingMS(long milliseconds) {
+        displayTime(milliseconds);
+        remainingMS = milliseconds;
+        postInvalidate();
+    }
+
+    /**
+     * Flags if the timer has been started.
+     * If the timer is stopped then the values are reset
+     * @param isTimerStarted - true or false the timer is running
+     */
+    public void setIsTimerStarted(boolean isTimerStarted){
+        this.isTimerStarted = isTimerStarted;
+        if(!isTimerStarted){
+            resetDisplayValues();
+        }
+    }
+
+    private void resetDisplayValues(){
+        hourDisplay.setText(R.string.zero_time);
+        minuteDisplay.setText(R.string.zero_time);
+        secondsDisplay.setText(R.string.zero_time);
+        durationMS = 0;
+        remainingMS = 0;
+        currentIncrementIndex = -1;
 
     }
 }

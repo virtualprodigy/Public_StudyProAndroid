@@ -17,32 +17,6 @@
         android:layout_above="@+id/mascotIcon"
         android:layout_margin="24dp"/>
 
-    <Button
-        android:id="@+id/IncreaseButton"
-        android:layout_width="120dp"
-
-        android:layout_height="45dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="7dp"
-        android:layout_marginStart="7dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/pulbutton"
-        android:visibility="gone"/>
-
-    <Button
-        android:id="@+id/DecreaseButton"
-        android:layout_width="120dp"
-        android:layout_height="45dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="7dp"
-        android:layout_marginEnd="7dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/negitivebutton"
-        android:visibility="gone"/>
-
-
     <ImageView
         android:id="@+id/mascotIcon"
         android:layout_width="200dp"
@@ -52,11 +26,7 @@
         android:layout_alignParentBottom="true"
         android:adjustViewBounds="true"
         android:contentDescription="@string/mascot_description"/>
-    <TextView
-        android:id="@+id/totaltime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
+
     <ScrollView
         android:id="@+id/mascotSpeechContainer"
         android:layout_width="wrap_content"

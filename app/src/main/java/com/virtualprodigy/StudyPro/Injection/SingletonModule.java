@@ -8,6 +8,7 @@ import com.squareup.okhttp.OkHttpClient;
 import com.virtualprodigy.studypro.BuildConfig;
 import com.virtualprodigy.studypro.Database.OrmHelper;
 import com.virtualprodigy.studypro.StudyProApplication;
+import com.virtualprodigy.studypro.StudyTimer.TimedBreaks;
 import com.virtualprodigy.studypro.services.RetrofitService;
 
 import javax.inject.Singleton;
@@ -65,6 +66,12 @@ public class SingletonModule {
                 .setEndpoint("");
         return builder.build().create(RetrofitService.class);
 
+    }
+
+    @Provides
+    @Singleton
+    TimedBreaks provideTimedBreaks(){
+        return  new TimedBreaks();
     }
 
 }
