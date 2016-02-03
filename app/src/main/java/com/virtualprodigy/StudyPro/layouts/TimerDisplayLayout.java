@@ -82,7 +82,7 @@ public class TimerDisplayLayout extends RelativeLayout {
     private void init(Context context) {
         this.context = context;
         Resources res = context.getResources();
-        ((StudyProApplication) ((Activity)context).getApplication()).getComponent().inject(this);
+        ((StudyProApplication)context.getApplicationContext()).getComponent().inject(this);
 
         arcRect = new RectF();
         arcPaint = new Paint();
@@ -251,6 +251,9 @@ public class TimerDisplayLayout extends RelativeLayout {
         }
     }
 
+    /**
+     * Rresets all the values for the timerdisplay to start fresh
+     */
     private void resetDisplayValues(){
         hourDisplay.setText(R.string.zero_time);
         minuteDisplay.setText(R.string.zero_time);
@@ -258,6 +261,13 @@ public class TimerDisplayLayout extends RelativeLayout {
         durationMS = 0;
         remainingMS = 0;
         currentIncrementIndex = -1;
+    }
 
+    /**
+     * Retuns the timer duration
+     * @return long time in ms
+     */
+    public long getDurationMS(){
+        return durationMS;
     }
 }

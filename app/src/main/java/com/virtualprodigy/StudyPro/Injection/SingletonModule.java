@@ -70,7 +70,7 @@ public class SingletonModule {
 
     @Provides
     @Singleton
-    TimedBreaks provideTimedBreaks(Context context){
+    TimedBreaks provideTimedBreaks(){
         return  new TimedBreaks(context);
     }
 
