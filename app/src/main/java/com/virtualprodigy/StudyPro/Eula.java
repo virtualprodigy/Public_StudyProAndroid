@@ -32,7 +32,7 @@ public class Eula extends Activity {
 		final SharedPreferences saveEula = PreferenceManager.getDefaultSharedPreferences(this);
 		Boolean isEulaAccepted = saveEula.getBoolean(eulaKey_Title, false);
 
-		final Intent startApp = new Intent(this, CramSlam.class);
+		final Intent startApp = new Intent(this, StudyProActivity.class);
 		if (isEulaAccepted == true) {
 			startActivity(startApp);
 		}else {

@@ -6,7 +6,7 @@ import java.text.NumberFormat;
 import com.virtualprodigy.studypro.NotiBarBreakDisplay;
 import com.virtualprodigy.studypro.Utils.Prefs;
 import com.virtualprodigy.studypro.R;
-import com.virtualprodigy.studypro.CramSlam;
+import com.virtualprodigy.studypro.StudyProActivity;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -132,7 +132,7 @@ public class TimerService extends Service {
 		}
 
         Intent tickIntent = new Intent(getBaseContext(),
-                com.virtualprodigy.studypro.CramSlam.class);
+                StudyProActivity.class);
 
         PendingIntent PendingTickIntent = PendingIntent.getActivity(
                 getBaseContext(), 0, tickIntent, 0);
@@ -164,7 +164,7 @@ public class TimerService extends Service {
 		@Override
 		public void onFinish() {
 			Intent startIntent = new Intent(getBaseContext(),
-					CramSlam.class);
+					StudyProActivity.class);
 			// startIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);//
 			// this flag
 			/* do I need */// startIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
@@ -224,7 +224,7 @@ public class TimerService extends Service {
 			iggySayVeiwable(cb.breakMessages(time));
 
 			Intent tickIntent = new Intent(getBaseContext(),
-					com.virtualprodigy.studypro.CramSlam.class);
+					StudyProActivity.class);
 
 			PendingIntent PendingTickIntent = PendingIntent.getActivity(
 					getBaseContext(), 0, tickIntent, 0);
