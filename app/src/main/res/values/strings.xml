@@ -33,6 +33,20 @@
     <!--study timer fragment -->
     <string name="please_set_time">Please Select Your Amount Of Study Time</string>
 
+    <string name="zero_time">00</string>
+    <string name="hour_indicator">H</string>
+    <string name="minute_indicator">M</string>
+    <string name="second_indicator">S</string>
+    <string name="totaltime">Select Your Amount Of Study Time</string>
+    <string name="vib_title">Vibrate</string>
+    <string name="vib_summary">Device will vibrate when the timer finishes</string>
+    <string name="alarm_title">Alarm Sound</string>
+    <string name="alarm_summary">Plays an alert sound when the timer finishes</string>
+    <string name="breakvib_title">Vibrate On Break Alert</string>
+    <string name="breakvib_summary">Device will vibrate when break starts/ends</string>
+    <string name="breakring_title">Alarm Sound On Break Alert</string>
+    <string name="breakring_summary">Plays an alert sound when break starts/ends</string>
+
     <!--    about xml-->
     <string name="aboutTitle">CramSlam</string>
     <string name="appName">CramSlam</string>
@@ -49,19 +63,6 @@
 
     <!--    changelog xml-->
     <string name="closeChangeLog">Close</string>
-
-    <!--    time xml-->
-    <string name="totaltime">Select Your Amount Of Study Time</string>
-
-    <string name="vib_title">Vibrate</string>
-    <string name="vib_summary">Device will vibrate when the timer finishes</string>
-    <string name="alarm_title">Alarm Sound</string>
-    <string name="alarm_summary">Plays an alert sound when the timer finishes</string>
-
-    <string name="breakvib_title">Vibrate On Break Alert</string>
-    <string name="breakvib_summary">Device will vibrate when break starts/ends</string>
-    <string name="breakring_title">Alarm Sound On Break Alert</string>
-    <string name="breakring_summary">Plays an alert sound when break starts/ends</string>
 
     <string name="settings_label">Settings...</string>
     <string name="settings_shortcut">s</string>

@@ -8,43 +8,13 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/StartButton"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
+    <include layout="@layout/timer_display_layout"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/timerDisplayLayout"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/startbutton"
-        android:padding="10dp"></Button>
-
-
-    <Button
-        android:id="@+id/StopButton"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/stopbutton"
-        android:padding="10dp"
-
-        ></Button>
-
-    <Button
-        android:id="@+id/alarmstop"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/alarmbutton"
-        android:padding="10dp"
-
-        ></Button>
+        android:layout_above="@+id/mascotIcon"
+        android:layout_margin="24dp"/>
 
     <Button
         android:id="@+id/IncreaseButton"
@@ -52,7 +22,6 @@
 
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/StartButton"
         android:layout_marginLeft="7dp"
         android:adjustViewBounds="true"
         android:background="@drawable/pulbutton"></Button>
@@ -62,7 +31,6 @@
         android:layout_width="120dp"
         android:layout_height="45dp"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/StartButton"
         android:layout_marginRight="7dp"
         android:adjustViewBounds="true"
         android:background="@drawable/negitivebutton"
@@ -70,39 +38,31 @@
         ></Button>
 
 
+    <ImageView
+        android:id="@+id/mascotIcon"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:adjustViewBounds="true" />
     <TextView
         android:id="@+id/totaltime"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/DecreaseButton"
-        android:gravity="center"
-        android:text="@string/totaltime"
-        android:textColor="#000000"
-        android:textSize="25dp"
-        android:textStyle="bold"></TextView>
-
-
-    <ImageView
-        android:id="@+id/showiggy"
-        android:layout_width="210dp"
-        android:layout_height="210dp"
-        android:layout_alignParentRight="true"
-        android:adjustViewBounds="true" />
-
-    <ScrollView
-        android:id="@+id/scrollTalk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_alignBottom="@+id/showiggy"
+        android:visibility="gone"/>
+    <ScrollView
+        android:id="@+id/mascotSpeechContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/mascotIcon"
         android:layout_marginBottom="95dp"
         android:layout_marginTop="2dp"
         android:background="@drawable/text"
         android:visibility="gone">
 
+
         <TextView
-            android:id="@+id/iggypoptalk"
+            android:id="@+id/mascotSpeechTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
@@ -110,10 +70,7 @@
             android:paddingTop="2dp"
             android:singleLine="false"
             android:textColor="#000000"
-            android:textSize="20dp"
-
-
-            ></TextView>
+            android:textSize="20sp"/>
     </ScrollView>
 
     <android.support.design.widget.FloatingActionButton

@@ -23,7 +23,7 @@
 <ImageView android:layout_height="220dp" 
 android:layout_width="220dp" 
 android:adjustViewBounds="true" 
-android:id="@+id/showiggy" 
+android:id="@+id/mascotIcon"
 android:src="@drawable/iggy"
  android:layout_alignParentBottom="true"
  android:layout_alignLeft="@+id/message" 

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/hourDisplay"
+                style="@style/time_digit_style"
+                android:text="@string/zero_time" />
+
+            <TextView
+                android:id="@+id/hourIndicator"
+                style="@style/time_indicator_style"
+                android:layout_alignBottom="@+id/hourDisplay"
+                android:layout_toEndOf="@+id/hourDisplay"
+                android:layout_toRightOf="@+id/hourDisplay"
+                android:text="@string/hour_indicator" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/minuteDisplay"
+                style="@style/time_digit_style"
+                android:text="@string/zero_time" />
+
+            <TextView
+                android:id="@+id/minuteIndicator"
+                style="@style/time_indicator_style"
+                android:layout_alignBottom="@+id/minuteDisplay"
+                android:layout_toEndOf="@+id/minuteDisplay"
+                android:layout_toRightOf="@+id/minuteDisplay"
+                android:text="@string/minute_indicator" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/secondDisplay"
+                style="@style/time_digit_style"
+                android:text="@string/zero_time" />
+
+            <TextView
+                android:id="@+id/secondIndicator"
+                style="@style/time_indicator_style"
+                android:layout_alignBottom="@+id/secondDisplay"
+                android:layout_toEndOf="@+id/secondDisplay"
+                android:layout_toRightOf="@+id/secondDisplay"
+                android:text="@string/second_indicator" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

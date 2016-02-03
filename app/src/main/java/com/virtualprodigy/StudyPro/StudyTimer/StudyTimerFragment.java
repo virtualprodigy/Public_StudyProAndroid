@@ -88,12 +88,12 @@ public class StudyTimerFragment extends Fragment {
 
 	private Intent startTimerService;
 
-	protected @Bind(R.id.iggypoptalk) TextView popText;
+	protected @Bind(R.id.mascotSpeechTV) TextView popText;
 	protected @Bind(R.id.totaltime) TextView totalTimeTV;
-	protected @Bind(R.id.scrollTalk) ScrollView sV;
+	protected @Bind(R.id.mascotSpeechContainer) ScrollView sV;
 	protected @Bind(R.id.IncreaseButton) Button increase;
 	protected @Bind(R.id.DecreaseButton) Button decrease;
-	protected @Bind(R.id.showiggy) ImageView showingIggyReflected;
+	protected @Bind(R.id.mascotIcon) ImageView showingIggyReflected;
     protected @Bind(R.id.snackbarContainer) CoordinatorLayout coordinatorLayout;
 
     boolean isAlarm = false;
@@ -102,7 +102,7 @@ public class StudyTimerFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.time, container, false);
+		View view = inflater.inflate(R.layout.study_timer_fragment, container, false);
 		ButterKnife.bind(this, view);
 		fragmentContext = getActivity();
 		((StudyProApplication) getActivity().getApplication()).getComponent().inject(this);
