@@ -23,20 +23,24 @@
 
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/pulbutton"></Button>
+        android:background="@drawable/pulbutton"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/DecreaseButton"
         android:layout_width="120dp"
         android:layout_height="45dp"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginRight="7dp"
+        android:layout_marginEnd="7dp"
         android:adjustViewBounds="true"
         android:background="@drawable/negitivebutton"
-
-        ></Button>
+        android:visibility="gone"/>
 
 
     <ImageView
@@ -44,8 +48,10 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:adjustViewBounds="true" />
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/mascot_description"/>
     <TextView
         android:id="@+id/totaltime"
         android:layout_width="wrap_content"
@@ -66,7 +72,7 @@
             android:id="@+id/mascotSpeechTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="left"
+            android:gravity="start"
             android:includeFontPadding="false"
             android:paddingTop="2dp"
             android:singleLine="false"
@@ -80,6 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/snackbarContainer"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
         android:src="@drawable/control_play_icon"
         app:backgroundTint="@color/material_green"
@@ -92,6 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/snackbarContainer"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_margin="16dp"
         android:src="@drawable/control_stop_icon"
         app:backgroundTint="@color/material_red"

@@ -2,6 +2,6 @@
 <resources>
     <!--study timer-->
     <dimen name="timer_circle_stroke">8dp</dimen>
-    <dimen name="timer_circle_radius">12dp</dimen>
+    <dimen name="timer_circle_radius">14dp</dimen>
 
 </resources>

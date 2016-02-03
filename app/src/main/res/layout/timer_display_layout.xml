@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/numericDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -68,4 +69,19 @@
                 android:text="@string/second_indicator" />
         </RelativeLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/increaseTimer"
+        android:layout_below="@+id/numericDisplay"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/increase_time"
+        style="@style/timeIncrementButtons" />
+    <Button
+        android:id="@+id/decreaseTimer"
+        android:layout_below="@+id/numericDisplay"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/decrease_time"
+        style="@style/timeIncrementButtons" />
 </com.virtualprodigy.studypro.layouts.TimerDisplayLayout>
