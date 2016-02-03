@@ -66,26 +66,28 @@ public class TimedBreaks {
 
         JsonReader jsonReader = null;
         try {
-            InputStream inputStream = context.getResources().getAssets().open("file:///android_asset/timed_breaks.json");
+            InputStream inputStream = context.getResources().getAssets().open("timed_breaks.json");
             jsonReader = new JsonReader(new InputStreamReader(inputStream, "UTF-8"));
             //begin reading json
-            JsonToken peekForType = jsonReader.peek();
-            if (peekForType == JsonToken.BEGIN_ARRAY) {
+            JsonToken peekForType;
+            jsonReader.beginObject();
 
-                jsonReader.beginArray();
-
-                while (jsonReader.hasNext()) {
+            while (jsonReader.hasNext()) {
+                peekForType = jsonReader.peek();
+                if (peekForType == JsonToken.NAME) {
+                    //get the named of the array of timed notifications
                     String name = jsonReader.nextName();
                     jsonReader.beginArray();
                     while (jsonReader.hasNext()) {
                         TimedNotification timedNotification = gson.fromJson(jsonReader, TimedNotification.class);
                         studyDurations.addDurationNotification(name, timedNotification);
                     }
+
                     jsonReader.endArray();
                 }
-                jsonReader.endArray();
             }
-
+            
+        jsonReader.endObject();
         } catch (Exception e) {
         } finally {
             try {
