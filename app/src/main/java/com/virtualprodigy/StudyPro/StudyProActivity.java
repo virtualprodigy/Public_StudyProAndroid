@@ -1,23 +1,50 @@
 package com.virtualprodigy.studypro;
 
-//remember to add a map feature that finds maps specifically, nothing else
-
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.widget.ListView;
+
+import com.virtualprodigy.studypro.Adapters.NavigationDrawerAdapter;
+
+import java.util.ArrayList;
 
 public class StudyProActivity extends AppCompatActivity {
-    /** Called when the activity is first created. */
+    private final String TAG = this.getClass().getName().toString();
+    public Context context;
+    private Resources res;
+
+    private ListView navDrawer;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private ArrayList<String> navTitles;
+    private TypedArray navImages;
+
+    private NavigationDrawerAdapter navAdapter;
+    private FragmentManager fragmentManager;
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
+
+    private fragmentsEnum currentFragment = fragmentsEnum.studyTimer;
+
+    public enum fragmentsEnum {
+        studyTimer,
+        notes,
+        gradeCalculator
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
-//
-//        Resources res = getResources();
-//        TabHost tabHost = getTabHost();
-//        TabHost.TabSpec spec;
-//        Intent intent;
-//
+        context = this;
+        res = context.getResources();
+        ((StudyProApplication) getApplication()).getComponent().inject(this);
 //        intent = new Intent().setClass(this, CalcGrade.class);
 //        spec = tabHost.newTabSpec("gradeCalc").setIndicator("Grade Calculator",
 //                          res.getDrawable(R.drawable.ic_tab_calc))

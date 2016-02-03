@@ -46,7 +46,7 @@ private SharedPreferences tutorialPrefs;
 			doNotShowAgain.setChecked(false);
 		}
 		currentImage.setImageResource(R.raw.one);
-		tutorialText.setText("Welcome to CramSlam. \n This Tutorial will teach how to get the most from this study aid.You can always review the directions by clicking the \"i\" icon at the bottom of the screen");
+		tutorialText.setText("Welcome to CramSlam. \n This Tutorial will teach how to get the most from this study aid.You can always review the directions by clicking the \"i\" ic_launcher at the bottom of the screen");
 		
 		
 		nextImage.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +128,7 @@ private SharedPreferences tutorialPrefs;
 		
 		case 1:
 			currentImage.setImageResource(R.raw.one);
-			tutorialText.setText("Welcome to CramSlam. \n This Tutorial will teach how to get the most from this study aid.You can always review the directions by clicking the \"i\" icon at the bottom of the screen.");
+			tutorialText.setText("Welcome to CramSlam. \n This Tutorial will teach how to get the most from this study aid.You can always review the directions by clicking the \"i\" ic_launcher at the bottom of the screen.");
 			pageNumber.setText("1/10");
 			break;
 		
