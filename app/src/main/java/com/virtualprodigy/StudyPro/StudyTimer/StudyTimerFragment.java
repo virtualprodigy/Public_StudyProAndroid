@@ -100,7 +100,7 @@ public class StudyTimerFragment extends Fragment {
     boolean isTimerRunning = false;
 	View displayEmptyListMessage;
 
-//    @Inject TimedBreaks cb;
+    @Inject TimedBreaks timedBreaks;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -175,7 +175,7 @@ public class StudyTimerFragment extends Fragment {
 
 			Log.i(TAG, "Starting timer service");
 			startTimerService.putExtra(TimerService.EXTRA_TIME_AMOUNT, time4Count);
-			startTimerService.putExtra(TimerService.EXTRA_TIME_LIMIT, timeLimit);
+			startTimerService.putExtra(TimerService.EXTRA_TIME_LIMIT, timerDisplay.getDurationMS());
 
 			new Thread() {
 				public void run() {
@@ -301,9 +301,8 @@ public class StudyTimerFragment extends Fragment {
             NumberFormat nf;
             nf = NumberFormat.getInstance();
             nf.setMinimumIntegerDigits(2);
-			// seconds
 
-			iggySayViewable(cb.breakMessages(tickTime));
+            //TODO make otto event from alarm to post the new message iggySayViewable(timedBreaks.(tickTime));
             timerDisplay.setRemainingMS((long) tickTime);
 
 		}

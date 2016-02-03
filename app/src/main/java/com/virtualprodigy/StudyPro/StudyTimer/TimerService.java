@@ -35,7 +35,6 @@ public class TimerService extends Service {
 
 	boolean IggyVisiable = true;
 	boolean startVis;
-	TimedBreaks cb = new TimedBreaks();
 	private NotificationManager statusNoti;
 	private NotificationManager serviceStatus;
 	private NotificationManager timeRemainingNoti;
@@ -113,7 +112,7 @@ public class TimerService extends Service {
 		}
 
 		time4Count = intent.getIntExtra(EXTRA_TIME_AMOUNT, 0);
-		cb.setTimerDuration(intent.getIntExtra(EXTRA_TIME_LIMIT, 50));
+//		cb.setTimerDuration(intent.getIntExtra(EXTRA_TIME_LIMIT, 50));
 
 		if (time4Count >= 15000) {
 			count = new MyCount(time4Count, 1000);
@@ -223,7 +222,7 @@ public class TimerService extends Service {
 			i.putExtra("startVis", false);
 
 
-			iggySayVeiwable(cb.breakMessages(time));
+//			iggySayVeiwable(cb.breakMessages(time));
 
 			Intent tickIntent = new Intent(getBaseContext(),
 					StudyProActivity.class);
@@ -263,103 +262,103 @@ public class TimerService extends Service {
 
 
 		Context cont = getApplicationContext();
-		if (iS.equals("iggy")) {
-
-
-		} else {
-
-			if (IggyVisiable == false) {// set a broadcast receive for this
-				try {
-
-					String breakTitle = "";
-					Intent letKnow = new Intent(cont, NotiBarBreakDisplay.class);
-					letKnow.putExtra("message", iS);
-					PendingIntent intent = PendingIntent.getActivity(cont, 0,
-							letKnow, 0);
-					if (cb.isBreak() == 0) {
-						breakTitle = "Break Time";// for the status bar
-													// notification
-					}
-					if (cb.isBreak() == 1) {
-						breakTitle = "Back To Studying";
-					}
-
-					Notification.Builder builder = new Notification.Builder(cont);
-					Notification noti = builder
-							.setContentIntent(intent)
-							.setSmallIcon(R.drawable.iggy)
-							.setTicker("CramSlam Break Alert")
-							.setWhen(System.currentTimeMillis())
-							.setAutoCancel(true).setContentTitle(breakTitle)
-							.setContentText(breakTitle).build();
-
-					noti.ledARGB = 0xff00ff00;
-					noti.ledOnMS = 400;
-					noti.ledOffMS = 1500;
-
-					noti.flags = Notification.FLAG_SHOW_LIGHTS
-							| Notification.FLAG_AUTO_CANCEL;
-					statusNoti.notify(9, noti);
-				} catch (Exception e) {
-				}
-			}
-
-			Vibrator breakvib;
-			breakvib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
-			long[] vibpat = { 0, 200, 200, 200, 200 };
-			// Vibrate for 300 milliseconds
-			if (Prefs.getBVib(cont)) {
-				try {
-					breakvib.vibrate(vibpat, -1);
-				} catch (Exception e) {
-				}
-			}
-
-			try {
-
-				// here's where I make the noficiation sound
-				notSound.setDataSource(cont, RingtoneManager
-						.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
-
-			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-
-			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			final AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-			if (audioManager.getStreamVolume(AudioManager.STREAM_ALARM) != 0) {
-				notSound.setAudioStreamType(AudioManager.STREAM_ALARM);
-				notSound.setLooping(false);
-				try {
-					// j.prepare();
-					notSound.prepare();
-
-				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				if (Prefs.getBAlarm(cont)) {
-					try {
-						notSound.start();
-					} catch (Exception e) {
-					}
-				}
-
-			}
-		}
+//		if (iS.equals("iggy")) {
+//
+//
+//		} else {
+//
+//			if (IggyVisiable == false) {// set a broadcast receive for this
+//				try {
+//
+//					String breakTitle = "";
+//					Intent letKnow = new Intent(cont, NotiBarBreakDisplay.class);
+//					letKnow.putExtra("message", iS);
+//					PendingIntent intent = PendingIntent.getActivity(cont, 0,
+//							letKnow, 0);
+//					if (cb.isBreak() == 0) {
+//						breakTitle = "Break Time";// for the status bar
+//													// notification
+//					}
+//					if (cb.isBreak() == 1) {
+//						breakTitle = "Back To Studying";
+//					}
+//
+//					Notification.Builder builder = new Notification.Builder(cont);
+//					Notification noti = builder
+//							.setContentIntent(intent)
+//							.setSmallIcon(R.drawable.iggy)
+//							.setTicker("CramSlam Break Alert")
+//							.setWhen(System.currentTimeMillis())
+//							.setAutoCancel(true).setContentTitle(breakTitle)
+//							.setContentText(breakTitle).build();
+//
+//					noti.ledARGB = 0xff00ff00;
+//					noti.ledOnMS = 400;
+//					noti.ledOffMS = 1500;
+//
+//					noti.flags = Notification.FLAG_SHOW_LIGHTS
+//							| Notification.FLAG_AUTO_CANCEL;
+//					statusNoti.notify(9, noti);
+//				} catch (Exception e) {
+//				}
+//			}
+//
+//			Vibrator breakvib;
+//			breakvib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//
+//			long[] vibpat = { 0, 200, 200, 200, 200 };
+//			// Vibrate for 300 milliseconds
+//			if (Prefs.getBVib(cont)) {
+//				try {
+//					breakvib.vibrate(vibpat, -1);
+//				} catch (Exception e) {
+//				}
+//			}
+//
+//			try {
+//
+//				// here's where I make the noficiation sound
+//				notSound.setDataSource(cont, RingtoneManager
+//						.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+//
+//			} catch (IllegalArgumentException e) {
+//				// TODO Auto-generated catch block
+//
+//			} catch (SecurityException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IllegalStateException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//			final AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+//			if (audioManager.getStreamVolume(AudioManager.STREAM_ALARM) != 0) {
+//				notSound.setAudioStreamType(AudioManager.STREAM_ALARM);
+//				notSound.setLooping(false);
+//				try {
+//					// j.prepare();
+//					notSound.prepare();
+//
+//				} catch (IllegalStateException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				if (Prefs.getBAlarm(cont)) {
+//					try {
+//						notSound.start();
+//					} catch (Exception e) {
+//					}
+//				}
+//
+//			}
+//		}
 
 	}
 

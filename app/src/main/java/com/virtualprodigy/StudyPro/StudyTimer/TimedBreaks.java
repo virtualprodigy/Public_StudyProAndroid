@@ -29,7 +29,7 @@ public class TimedBreaks {
 
     public TimedBreaks(Context context) {
         this.context = context;
-        ((StudyProApplication) ((Activity) context).getApplication()).getComponent().inject(this);
+        ((StudyProApplication) context.getApplicationContext()).getComponent().inject(this);
         studyDurations = new StudyDurations();
         parseTimedBreaks();
     }

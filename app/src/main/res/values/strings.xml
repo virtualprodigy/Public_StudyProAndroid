@@ -41,7 +41,7 @@
     <string name="decrease_time">- 30</string>
     <string name="totaltime">Select Your Amount Of Study Time</string>
     <string name="mascot_description">An image of the app mascot</string>
-    <string name="time_is_up_message">Time's up! Please stop the timer</string>
+    <string name="time_is_up_message">Time\'s up! Please stop the timer</string>
     <string name="please_select_time">Please select a time first</string>
 
     <string name="vib_title">Vibrate</string>
@@ -52,9 +52,6 @@
     <string name="breakvib_summary">Device will vibrate when break starts/ends</string>
     <string name="breakring_title">Alarm Sound On Break Alert</string>
     <string name="breakring_summary">Plays an alert sound when break starts/ends</string>
-
-    <!--Timed Break Messages-->
-    <string name="study_30_mins"></string>
 
     <!--    about xml-->
     <string name="aboutTitle">CramSlam</string>
