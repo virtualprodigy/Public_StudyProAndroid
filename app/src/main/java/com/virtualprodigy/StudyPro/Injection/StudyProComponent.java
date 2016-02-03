@@ -1,6 +1,7 @@
 package com.virtualprodigy.studypro.Injection;
 
 import com.virtualprodigy.studypro.StudyProActivity;
+import com.virtualprodigy.studypro.StudyTimer.StudyTimerFragment;
 
 import javax.inject.Singleton;
 
@@ -13,4 +14,5 @@ import dagger.Component;
 @Singleton
 public interface StudyProComponent {
     void inject(StudyProActivity studyProActivity);
+    void inject(StudyTimerFragment studyTimerFragment);
 }

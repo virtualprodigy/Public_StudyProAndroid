@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.virtualprodigy.studypro.Adapters.NavigationDrawerAdapter;
+import com.virtualprodigy.studypro.StudyTimer.StudyTimerFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -61,26 +62,28 @@ public class StudyProActivity extends AppCompatActivity {
 
     private void setupNavDrawer() {
 
-        navTitles = new ArrayList<String> (Arrays.asList(context.getResources().getStringArray(R.array.nav_items)));
+        navTitles = new ArrayList<>(Arrays.asList(context.getResources().getStringArray(R.array.nav_items)));
         navImages = context.getResources().obtainTypedArray(R.array.nav_icons);
 
         navAdapter = new NavigationDrawerAdapter(context, navTitles, navImages);
         navDrawer.setAdapter(navAdapter);
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,toolbar, R.string.nav_bar_open, R.string.nav_bar_close);
+        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_bar_open, R.string.nav_bar_close);
         mDrawerToggle.syncState();
         drawerLayout.setDrawerListener(mDrawerToggle);
 
-//        final Fragment premiumFrag = new PremiumFragment();
-//        final Fragment homepageFrag = new HomepageFragment();
-//        final StatpageFragment statpageFrag = new StatpageFragment();
-
+        final Fragment studyTimer = new StudyTimerFragment();
+        currentFragment = studyTimer;
         //Add fragments
-//        fragmentManager.beginTransaction().add(R.id.DisplayFragment, currentSingleLayoutFrag, fragmentsEnum.homepage.toString()).addToBackStack(null).commitAllowingStateLoss();
-//        fragmentManager.beginTransaction().add(R.id.DisplayFragment, statpageFrag, fragmentsEnum.stats.toString()).addToBackStack(null).commitAllowingStateLoss();
-//        fragmentManager.beginTransaction().hide(statpageFrag).commitAllowingStateLoss();
+        fragmentManager
+                .beginTransaction()
+                .add(R.id.DisplayFragment,
+                        currentFragment,
+                        fragmentsEnum.studyTimer.toString())
+                .addToBackStack(null)
+                .commitAllowingStateLoss();
 
         //Set the default selection to the homepage
-        navDrawer.setItemChecked(1, true);
+        navDrawer.setItemChecked(0, true);
         navDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -88,16 +91,16 @@ public class StudyProActivity extends AppCompatActivity {
 
                 switch (position) {
                     case 0:
-//                        try {
-//                            Log.i(TAG, "Study Timer Opened");
-//                            currentFragEnum = fragmentsEnum.studyTimer;
-//                            fragmentManager.beginTransaction().hide(currentFragment)
-//                                    .show(fragmentManager.findFragmentByTag(fragmentsEnum.studyTimer.toString())).commitAllowingStateLoss();
-//                            currentFragment = fragmentManager.findFragmentByTag(fragmentsEnum.studyTimer.toString());
-//                            navDrawer.setItemChecked(position, true);
-//                        } catch (Exception e) {
-//                            Log.e(TAG, e.getMessage(), e);
-//                        }
+                        try {
+                            Log.i(TAG, "Switch to Study Timer Fragment");
+                            currentFragEnum = fragmentsEnum.studyTimer;
+                            fragmentManager.beginTransaction().hide(currentFragment)
+                                    .show(fragmentManager.findFragmentByTag(fragmentsEnum.studyTimer.toString())).commitAllowingStateLoss();
+                            currentFragment = fragmentManager.findFragmentByTag(fragmentsEnum.studyTimer.toString());
+                            navDrawer.setItemChecked(position, true);
+                        } catch (Exception e) {
+                            Log.e(TAG, e.getMessage(), e);
+                        }
 
                         break;
 

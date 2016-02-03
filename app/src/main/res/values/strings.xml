@@ -20,16 +20,17 @@
     <string name="notebutton">New CramSlam Note!!</string>
     <string name="delete">Remove CramNote</string>
     <string name="modify_note">Write A Note</string>
-
     <string name="title">Name it</string>
     <string name="body">Jot some notes</string>
     <string name="confirm">save it</string>
-
     <string name="add">Add CramNote</string>
     <string name="startbutton">Start Studying</string>
     <string name="stopbutton">Stop Studying</string>
     <string name="increase">More Time</string>
     <string name="decrease">Less Time</string>
+
+    <!--study timer fragment -->
+    <string name="please_set_time">Please Select Your Amount Of Study Time</string>
 
     <!--    about xml-->
     <string name="aboutTitle">CramSlam</string>
