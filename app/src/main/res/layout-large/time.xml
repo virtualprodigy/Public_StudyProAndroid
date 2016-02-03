@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  android:background="#f26522" -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/TimeBackground" 
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+   android:background="@color/cramslam_app_background_blue"
+  android:textColor="#000000"
+    >
+<!--android:background="#f26522"  -->
+
+<Button
+	
+	android:id="@+id/StartButton"  
+	android:layout_height="wrap_content" 
+	android:padding="20dp" 
+	android:layout_width="330dp"
+	android:layout_marginTop="10dp"
+	android:layout_centerHorizontal="true"
+  android:layout_alignParentTop="true"
+  android:background="@drawable/startbutton"
+  android:adjustViewBounds="true"
+	></Button>
+	
+	
+
+
+<Button
+  android:background="@drawable/stopbutton"
+  android:adjustViewBounds="true"
+  android:layout_height="wrap_content" 
+  android:padding="20dp"
+  android:layout_width="330dp"
+  android:id="@+id/StopButton"
+  android:layout_marginTop="10dp"
+	android:layout_centerHorizontal="true"
+  android:layout_alignParentTop="true"
+  
+   ></Button>
+
+<Button
+  android:background="@drawable/alarmbutton"
+  android:adjustViewBounds="true"
+  android:layout_height="wrap_content" 
+  android:padding="20dp"
+  android:layout_width="330dp"
+  android:id="@+id/alarmstop"
+  android:layout_marginTop="10dp"
+	android:layout_centerHorizontal="true"
+  android:layout_alignParentTop="true"
+  
+   ></Button>
+<Button  android:id="@+id/IncreaseButton"
+	android:layout_width="120dp" 
+	
+	android:layout_height="70dp"
+	android:layout_below="@+id/StartButton"
+	android:layout_alignParentLeft="true"
+	android:layout_marginLeft="14dp"
+	 android:background="@drawable/pulbutton"
+  android:adjustViewBounds="true"
+></Button>
+	
+	<Button
+  android:id="@+id/DecreaseButton" 
+  android:layout_width="120dp" 
+  android:layout_height="70dp" 
+  android:layout_below="@+id/StartButton"
+	android:layout_alignParentRight="true"
+	android:layout_marginRight="14dp"
+	 android:background="@drawable/negitivebutton"
+  android:adjustViewBounds="true"
+  
+></Button>
+ 
+
+
+
+
+<TextView android:id="@+id/totaltime"
+
+	android:textStyle="bold" 
+	android:layout_height="wrap_content" 
+	android:text="@string/totaltime"
+ 	android:textColor="#000000" 
+ 	android:layout_width="fill_parent" 
+ 	android:textSize="32dp" 
+ 	android:layout_below="@+id/DecreaseButton"
+  	android:gravity="center" 
+   ></TextView>
+
+
+<ImageView
+android:id="@+id/showiggy" 
+android:layout_width="265dp"
+android:layout_height="265dp"
+android:adjustViewBounds="true"
+android:layout_above="@+id/timescreenads"
+android:layout_alignParentRight="true"
+/>
+<!-- android:src="@drawable/iggy"
+android:layout_width="165dp"
+android:layout_height="160dp"
+android:adjustViewBounds="true"
+ -->
+
+  <Button
+  android:layout_height="50dp" 
+  android:layout_width="50dp"
+  android:id="@+id/infobutton"
+ android:layout_above="@+id/timescreenads"
+android:layout_alignParentLeft="true"
+android:background="@drawable/infobutton"
+android:adjustViewBounds="true"></Button>
+
+ <ScrollView
+android:id="@+id/scrollTalk"
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+  
+  android:layout_marginTop="2dp"
+ android:layout_marginBottom="95dp"
+  android:layout_alignBottom="@+id/showiggy"
+  android:background="@drawable/text"
+  android:visibility="gone" 
+  
+  >
+<TextView android:textSize="20dp"
+android:id="@+id/iggypoptalk"
+ android:gravity="left"
+ android:paddingTop="2dp"
+ android:singleLine="false"
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content"
+   android:includeFontPadding="false"
+  android:textColor="#000000" 
+ 
+  
+  
+  
+   ></TextView>
+  </ScrollView>
+    <com.google.ads.AdView
+            android:id="@+id/timescreenads"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="a14f83aafa7d41a"
+            ads:testDevices="TEST_EMULATOR,TEST_DEVICE_ID"
+            ads:loadAdOnCreate="true" />
+<!-- android:layout_alignTop="@+id/totaltime" -->
+
+</RelativeLayout>
+

@@ -1,0 +1,13 @@
+build/*
+/littleBlackBook/build
+/.idea
+/gradle
+.gradle/
+build/
+/*/build/
+bin/
+gen/
+!build/mapping/*
+!/*/build/mapping/*
+app/virtualprodigyllc
+app/build.gradle

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources >
+ <color name="white">#FFFFFF</color>
+ <color name="yellow">#FFFF00</color>
+ <color name="fuchsia">#FF00FF</color>
+ <color name="red">#FF0000</color>
+ <color name="silver">#C0C0C0</color>
+ <color name="gray">#808080</color>
+ <color name="olive">#808000</color>
+ <color name="purple">#800080</color>
+ <color name="maroon">#800000</color>
+ <color name="aqua">#00FFFF</color>
+ <color name="lime">#00FF00</color>
+ <color name="teal">#008080</color>
+ <color name="green">#008000</color>
+ <color name="blue">#0000FF</color>
+ <color name="navy">#000080</color>
+ <color name="black">#000000</color>
+ <color name="app_background">#faf4e4</color>
+ <color name="text_color">#31D1F1</color>
+ <color name="cinnamon">#7B3F00</color>
+ <color name="darkturquoise">#00CED1</color>
+ <color name="ivory">#FFFFF0</color>
+ <!-- #FFf9f8ef -->
+ <color name="basic_button">#FFf9f8ff</color>
+ <color name="android_selected">#FF33b5e5</color>
+ <color name="android_longpress">#FF0099cc</color>
+ <color name="android_focused_border">#FF33b5e5</color>
+ <color name="android_focused_center">#7F33b5e5</color>
+ <color name="android_transparent">#00000000</color>
+ <color name="log_bttn_orange">#FFf8aa44</color>
+ <color name="action_bar">#FFce6a5c</color>
+ <color name="edit_text_background">#55FFFFFF</color>
+ 
+ <color name="seekbar_startBlueColor">#2baef9</color>
+ <color name="seekbar_CenterBlueColor">#a954b6</color>
+ <color name="seekbar_EndRedColor">#ff2500</color>
+ <color name="hyperlink_blue">#0645AD</color>
+ <color name="tan_header_color_slightly_opique">#B2f2dab5</color>
+ 
+ 
+ <color name="cramslam_note_header_yellow">#ffffcc00</color>
+ <color name="cramslam_app_background_blue">#ff6472ef</color>
+
+ <!--Color for the circles in the game-->
+ <color name="material_red">#f44336</color>
+ <color name="material_pink">#e91e63</color>
+ <color name="material_purple">#9c27b0</color>
+ <color name="material_deep_purple">#673ab7</color>
+ <color name="material_indigo">#3f51b5</color>
+ <color name="material_blue">#2196f3</color>
+ <color name="material_light_blue">#03a9f4</color>
+ <color name="material_cyan">#00bcd4</color>
+ <color name="material_teal">#009688</color>
+ <color name="material_green">#4caf50</color>
+ <color name="material_light_green">#8bc34a</color>
+ <color name="material_lime">#cddc39</color>
+ <color name="material_yellow">#ffeb3b</color>
+ <color name="material_amber">#ffc107</color>
+ <color name="material_orange">#ff9800</color>
+ <color name="material_deep_orange">#ff5722</color>
+ <color name="material_brown">#795548</color>
+ <color name="material_grey">#9e9e9e</color>
+ <color name="material_blue_grey">#607d8b</color>
+ <color name="material_black">#000000</color>
+ <color name="material_white">#ffffff</color>
+ 
+ 
+ 
+</resources>

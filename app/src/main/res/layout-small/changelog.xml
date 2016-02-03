@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/log_background"
+    android:orientation="vertical"
+    android:textColor="#000000" >
+
+ <RelativeLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ChangeLogRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+         >
+        
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ChangeLogSV"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dip" 
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarFadeDuration="0"
+    android:layout_above="@+id/closeButtonLayout">
+
+   
+
+        <TextView
+            android:id="@+id/changeLogText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:gravity="center_horizontal"
+            android:textSize="27dp"
+            android:textColor="#000000"  />
+
+
+    
+</ScrollView>
+
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/closeButtonLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            >
+<RelativeLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ChangeLogRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+         >
+          <Button
+            android:id="@+id/closeChangeLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+            android:text="@string/closeChangeLog"
+            android:textSize="30dp" />
+          </RelativeLayout>
+        </LinearLayout>
+</RelativeLayout>
+</LinearLayout>
+
+        
+
