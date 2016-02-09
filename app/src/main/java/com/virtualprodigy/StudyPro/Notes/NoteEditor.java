@@ -42,7 +42,6 @@ public class NoteEditor extends Activity {
         ButterKnife.bind(this);
         
         setTitle(R.string.note_editor_activity_title);
-
     }
 
     /**
@@ -59,7 +58,6 @@ public class NoteEditor extends Activity {
             note = new Note();
             note.setDateTime(System.currentTimeMillis());
         }
-
     }
 
     @Override
@@ -71,6 +69,7 @@ public class NoteEditor extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        saveNote();
     }
 
     /**
@@ -78,6 +77,8 @@ public class NoteEditor extends Activity {
      */
     private void saveNote(){
         try {
+            note.setTitle(noteTitle.getText().toString());
+            note.setNote(noteBody.getText().toString());
             Dao<Note, Integer> noteDao = ormHelper.getTypeDao(Note.class, Integer.class);
             noteDao.createOrUpdate(note);
         } catch (SQLException e) {

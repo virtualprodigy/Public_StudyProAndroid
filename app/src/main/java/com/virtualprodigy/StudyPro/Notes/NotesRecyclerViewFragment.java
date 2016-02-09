@@ -85,7 +85,7 @@ public class NotesRecyclerViewFragment extends Fragment {
      * @param event
      */
     @Subscribe
-    private void receiveSelectedNoteEvent(LaunchNoteEvent event) {
+    public void receiveSelectedNoteEvent(LaunchNoteEvent event) {
         Intent intent = new Intent(context, NoteEditor.class);
         intent.putExtra(NoteEditor.KEY_NOTE_BUNDLE, event.getBundle());
         startActivity(intent);
