@@ -36,6 +36,7 @@ public class Note implements Parcelable {
     private long dateTime;
 
     public Note() {
+        id = -1;
     }
 
     public int getId() {
@@ -115,6 +116,18 @@ public class Note implements Parcelable {
         return imageLocArray;
     }
 
+    /**
+     * This method returns the number of images within the note
+     *
+     * @return - the size of the noteImageLocations
+     */
+    public int getImageCount() {
+        if (noteImageLocations == null) {
+            return 0;
+        } else {
+            return noteImageLocations.size();
+        }
+    }
 
     @Override
     public int describeContents() {

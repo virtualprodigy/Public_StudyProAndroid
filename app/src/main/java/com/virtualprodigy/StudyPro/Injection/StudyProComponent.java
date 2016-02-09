@@ -1,5 +1,6 @@
 package com.virtualprodigy.studypro.Injection;
 
+import com.virtualprodigy.studypro.Notes.NoteEditor;
 import com.virtualprodigy.studypro.Notes.NotesRecyclerViewFragment;
 import com.virtualprodigy.studypro.StudyProActivity;
 import com.virtualprodigy.studypro.StudyTimer.StudyTimerFragment;
@@ -21,4 +22,5 @@ public interface StudyProComponent {
     void inject(TimerDisplayLayout timerDisplayLayout);
     void inject(TimedBreaks timedBreaks);
     void inject(NotesRecyclerViewFragment notesRecyclerViewFragment);
+    void inject(NoteEditor noteEditor);
 }

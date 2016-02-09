@@ -54,7 +54,7 @@
         <activity
             android:name=".LibraryLocator.Libraries"
             android:screenOrientation="portrait" />
-        <activity android:name=".Notes.Modify" />
+        <activity android:name=".Notes.NoteEditor" />
         <activity android:name="com.virtualprodigy.studypro.NotiBarBreakDisplay" />
         <!-- without making a seperate layout for landscape the save function wont work, ps to stop rotation for those not allowed to have a landscape copy i think you can copy and paste the prot -->
 
