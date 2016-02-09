@@ -41,6 +41,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.otto.Subscribe;
 import com.virtualprodigy.studypro.StudyProApplication;
 import com.virtualprodigy.studypro.Utils.Prefs;
 import com.virtualprodigy.studypro.R;
@@ -48,6 +49,7 @@ import com.virtualprodigy.studypro.Tutorial;
 import com.virtualprodigy.studypro.Utils.settingmenubuttons;
 import com.virtualprodigy.studypro.layouts.TimerDisplayLayout;
 import com.virtualprodigy.studypro.ottoBus.OttoHelper;
+import com.virtualprodigy.studypro.ottoBus.busPostEvents.StudyTimerSnackEvent;
 
 import javax.inject.Inject;
 
@@ -171,8 +173,6 @@ public class StudyTimerFragment extends Fragment {
     @OnClick(R.id.startTimerFAB)
     public void onClickStart() {
 		try {
-			//TODO: remove this thread, I believe it can be set in the manifest
-
 			Log.i(TAG, "Starting timer service");
 			startTimerService.putExtra(TimerService.EXTRA_TIME_AMOUNT, time4Count);
 			startTimerService.putExtra(TimerService.EXTRA_TIME_LIMIT, timerDisplay.getDurationMS());
@@ -278,6 +278,11 @@ public class StudyTimerFragment extends Fragment {
 
 		super.onDestroy();
 	}
+
+    @Subscribe
+    public void receiveStudyTimerSnackEvent(StudyTimerSnackEvent event){
+        Snackbar.make(coordinatorLayout, event.message, Snackbar.LENGTH_SHORT).show();
+    }
 
 	public class TickReceive extends BroadcastReceiver {
 		// public static final String CUSTOM_INTENT = "com.time";
