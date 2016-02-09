@@ -46,7 +46,7 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" />
         <activity
-            android:name=".Notes.CramSlamNotesListAdapter"
+            android:name=".Notes.NotesRecyclerViewFragment"
             android:screenOrientation="portrait" />
         <activity
             android:name=".GradeCalculator.ExamDates"

@@ -46,7 +46,10 @@
  <color name="cramslam_note_header_yellow">#ffffcc00</color>
  <color name="cramslam_app_background_blue">#ff6472ef</color>
 
- <!--Color for the circles in the game-->
+ <!--Notes Fragment -->
+ <color name="notes_fragment_background">#E2E2E1</color>
+
+ <!--Material Design Base Colors-->
  <color name="material_red">#f44336</color>
  <color name="material_pink">#e91e63</color>
  <color name="material_purple">#9c27b0</color>
