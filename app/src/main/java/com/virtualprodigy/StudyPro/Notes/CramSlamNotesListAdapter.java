@@ -113,7 +113,7 @@ public class CramSlamNotesListAdapter extends ListActivity implements OnClickLis
 	    case delete:
 	        AdapterContextMenuInfo info =
 	        	(AdapterContextMenuInfo) item.getMenuInfo();
-	        notesDB.destroyerNote(info.id);
+	        notesDB.deleteNote(info.id);
 	        AddData();
 	        return true;
 	    }
@@ -148,7 +148,7 @@ public class CramSlamNotesListAdapter extends ListActivity implements OnClickLis
 		Cursor filler = notesDB.fetchAllNotes();
 		startManagingCursor(filler);
 
-		String[] beginning = new String[] { NotesDataBase.Note_TITLE };
+		String[] beginning = new String[] { NotesDataBase.KEY_NOTE_TITLE};
 		int[] end = new int[] { R.id.notenom };
 
 		SimpleCursorAdapter list = new SimpleCursorAdapter(this,
@@ -162,7 +162,7 @@ public class CramSlamNotesListAdapter extends ListActivity implements OnClickLis
 	//idk why it bitched about being public...but I dont wanna make it private, I'm pretty sure it needs to talk to random methods and private would make it diffcult... becoming a good programmer is hard
 		super.onListItemClick( l, v, position, id);
 		Intent i = new Intent(this, Modify.class);
-		i.putExtra(NotesDataBase.NoteID, id);
+		i.putExtra(NotesDataBase.KEY_NOTE_ID, id);
 		startActivityForResult(i,edit);
 		
 	}

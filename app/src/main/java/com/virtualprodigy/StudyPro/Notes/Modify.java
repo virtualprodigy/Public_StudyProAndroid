@@ -64,7 +64,7 @@ public class Modify extends Activity {
 		Button confirmButton = (Button) findViewById(R.id.confirm);
 		//wow right here is a dozy
 		RowId = (savedInstanceState == null) ? null:
-			(Long) savedInstanceState.getSerializable(NotesDataBase.NoteID);
+			(Long) savedInstanceState.getSerializable(NotesDataBase.KEY_NOTE_ID);
 		
 		
 		
@@ -75,7 +75,7 @@ public class Modify extends Activity {
 		if(RowId == null){
 			
 			Bundle extras = getIntent().getExtras();
-			RowId = extras != null ? extras.getLong(NotesDataBase.NoteID)
+			RowId = extras != null ? extras.getLong(NotesDataBase.KEY_NOTE_ID)
 					: null;
 						
 			}
@@ -113,15 +113,15 @@ public class Modify extends Activity {
 			//c or cursor most likly because this will fill out the note and 
 			//leave the cursor after the finish reproduced note
 			startManagingCursor(c);
-			modTitle.setText(c.getString(c.getColumnIndexOrThrow(NotesDataBase.Note_TITLE)));//this had me stumped for a week, the title kept changeing cuz i had this set to noteid not notetitle
-			modBody.setText(c.getString(c.getColumnIndexOrThrow(NotesDataBase.Note)));
+			modTitle.setText(c.getString(c.getColumnIndexOrThrow(NotesDataBase.KEY_NOTE_TITLE)));//this had me stumped for a week, the title kept changeing cuz i had this set to noteid not notetitle
+			modBody.setText(c.getString(c.getColumnIndexOrThrow(NotesDataBase.KEY_NOTE_BODY)));
 		}
 	}
 	@Override
 	protected void onSaveInstanceState(Bundle outState){
 		super.onSaveInstanceState(outState);
 		saveState();
-		outState.putSerializable(NotesDataBase.NoteID, RowId);
+		outState.putSerializable(NotesDataBase.KEY_NOTE_ID, RowId);
 	}
 	@Override
 	protected void onPause(){

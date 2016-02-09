@@ -32,112 +32,146 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import com.virtualprodigy.studypro.Models.Notes.Note;
+
+import java.util.Formatter;
+import java.util.Locale;
 
 
 public class NotesDataBase {
- 
-	/* public static final String Note_TITLE = "noteTitle"; //part a pass what bout b, b must say title WTF again...at this point I assume the same for the body and _id labels
-	 public static final String Note = "notee"; //these dont work must need other form for sql to work
-	 public static final String NoteID = "Noteid";
-	*/
-	  public static final String Note_TITLE = "title";
-	    public static final String Note = "body";
-	    public static final String NoteID = "_id";
-	    
-	/* private static final String Iden = "notesLinkCable";//Iden is safe so its the link cable statement  */
-	    private static final String  Iden = "notesLinkCable";
-	 private ACTNotesDBBuddy DatBuddy;//dbhelper was a coni
-	 private SQLiteDatabase ACTNotesDB;
+    private final String TAG = this.getClass().getSimpleName();
+    private SQLiteDBHelper dbHelper;
+    private SQLiteDatabase database;
 
-	 private static final String DATABASE_CREATE =
-	        "create table notes (_id integer primary key autoincrement, "
-	        + "title text not null, body text not null);";//this line just seems pointless to me two lines of "" pstt
+    private static final String dbName = "studyProDatabase";
+    private static final String DatBassTable = "_NotesTable";
+    private static final int DATABASE_VERSION = 1;
+    private final Context context;
 
-	 
-/*	 private static final String DBname = "DatBass";//name pass wat abo "" must be lower case wtf
-	 private static final String DatBassTable = "table";//cant use the name table WTF on me
-	 private static final int DatBassVER = 2;//works for name
-	 */
-	    private static final String DBname = "datbass";
-	    private static final String DatBassTable = "notes";//for some reason has to be named notes??
-	    private static final int DatBassVER = 2;
-	 private final Context coni;
-	 
-	
-	 
- private static class ACTNotesDBBuddy extends SQLiteOpenHelper {
-	 
-		 ACTNotesDBBuddy(Context context){
-			 super(context, DBname, null, DatBassVER);
-		 }
-	 
-	 @Override//1 organizing in order as other did wasnt need either, it was a labeling error
-	 public void onCreate(SQLiteDatabase sld){
-		 sld.execSQL(DATABASE_CREATE);//so the data has so bs stuff pushed in it already lol
-	 }
-		 
-	 @Override//2
-	 public void onUpgrade(SQLiteDatabase slld, int old, int newV){
-		// Log.w(Iden, "I guess I'm upgrading sdl from ver" + old + " to " + newV +
-		//		 	" ps I hear this will kill off the old king and knights saved");//this is a logCat tag I believe anyway this kills old data for an update...wont be doing that
-		   
-            slld.execSQL("kill the king" + Note_TITLE);//this statement wont do shit but throw an sql error lmao
-		 onCreate(slld);
-	 }
-		 
-	 }
-	 //3
-	 public NotesDataBase(Context con){
-		 this.coni=con;
-	 }
-	 //4
-	 public NotesDataBase open() throws SQLException{
-		 DatBuddy = new ACTNotesDBBuddy(coni);
-		 ACTNotesDB =DatBuddy.getWritableDatabase();
-		 return this; 
-	 }
-	 //5
-	 public void close(){
-		 DatBuddy.close();
-	 }
-	  //6 a 10
-	 public long createNote( String name, String body){
-		 ContentValues Orgin = new ContentValues();
-		 Orgin.put(Note_TITLE, name);
-		 Orgin.put(Note,body);//my intial thought is this will over right each other but i believe its kinda like a stackish thing :)
-	    
-		 return ACTNotesDB.insert(DatBassTable ,null,Orgin);
-	 }
-	 
-	 //7a6
-	 public boolean destroyerNote(long locoRow){
-		return ACTNotesDB.delete(DatBassTable,NoteID + "=" + locoRow,null)>0; 
-	 }
-	 //8
-	 public Cursor fetchAllNotes(){
-		 return ACTNotesDB.query(DatBassTable, new String []{ NoteID,Note_TITLE,Note}, null, null, null, null, null);
-		 }
-	 
-	 
+    public static final String KEY_NOTE_ID = "_id";
+    public static final String KEY_NOTE_TITLE = "_title";
+    public static final String KEY_NOTE_BODY = "_note";
+    public static final String KEY_NOTE_DATE_TIME = "_dateTime";
 
-	 //9a7
-	 public Cursor fetchNote(long rid) throws SQLException{
-		 Cursor cursor = ACTNotesDB.query(true, DatBassTable, new String [] {NoteID,Note_TITLE,Note}, NoteID +"="+rid, null, null, null, null, null);
-		 
-		 if(cursor != null){
-			 cursor.moveToFirst();
-		 }
-		 return cursor;
-	 }
-	 //10
-	  public boolean updateNote(long loco, String name, String note) {
-	        ContentValues info = new ContentValues();
-	        info.put(Note_TITLE, name);
-	        info.put(Note, note);
-	        return ACTNotesDB.update(DatBassTable, info, NoteID + "=" + loco, null) > 0;
-	    }
-	
-	 
+    private class SQLiteDBHelper extends SQLiteOpenHelper {
 
-	 
+        SQLiteDBHelper(Context context) {
+            super(context, dbName, null, DATABASE_VERSION);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase sqLiteDatabase) {
+            //create the Notes Table.
+            //TODO (I won't be using this class but as a note) check api and see how sqlite stores longs, I see the cursor can get a long, make sure the create is typed correctly
+            String createNoteTable = "create table %s (%s integer primary key autoincrement, %s text not null, %s text not null %s long not null);";
+            String formattedCreateTable = String.format(Locale.US, createNoteTable, KEY_NOTE_ID, KEY_NOTE_TITLE, KEY_NOTE_BODY, KEY_NOTE_DATE_TIME);
+            sqLiteDatabase.execSQL(formattedCreateTable);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase sqLiteDatabase, int old, int newV) {
+            Log.d(TAG, "DB upgrading ");
+            //nothing to upgrade at this time
+        }
+
+    }
+
+    public NotesDataBase(Context context) {
+        this.context = context;
+    }
+
+    public NotesDataBase open() throws SQLException {
+        dbHelper = new SQLiteDBHelper(context);
+        database = dbHelper.getWritableDatabase();
+        return this;
+    }
+
+    public void close() {
+        dbHelper.close();
+    }
+
+    /**
+     * Creates a new note in the Database
+     * @param name
+     * @param body
+     * @param dateTime
+     * @return
+     */
+    public long createNote(String name, String body, long dateTime) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_NOTE_TITLE, name);
+        contentValues.put(KEY_NOTE_BODY, body);
+        contentValues.put(KEY_NOTE_DATE_TIME, dateTime);
+        return database.insert(DatBassTable, null, contentValues);
+    }
+
+    /**
+     * Deletes a note in the database
+     * @param rowID - row of the note to be deleted
+     * @return
+     */
+    public boolean deleteNote(long rowID) {
+        return database.delete(DatBassTable, KEY_NOTE_ID + "=" + rowID, null) > 0;
+    }
+
+    /**
+     * Feteches a cursor of all the notes in the database
+     * @return
+     */
+    public Cursor fetchAllNotes() {
+        return database.query(DatBassTable, new String[]{KEY_NOTE_ID, KEY_NOTE_TITLE, KEY_NOTE_BODY}, null, null, null, null, null);
+    }
+
+
+    /**
+     * Fetches the specific note at the given rowid
+     * @param rowID - the rowID of the note
+     * @return
+     * @throws SQLException
+     */
+    public Cursor fetchNote(long rowID) throws SQLException {
+        Cursor cursor = database.query(true, DatBassTable, new String[]{KEY_NOTE_ID, KEY_NOTE_TITLE, KEY_NOTE_BODY, KEY_NOTE_DATE_TIME}, KEY_NOTE_ID + "=" + rowID, null, null, null, null, null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    /**
+     * Returns a note from the db
+     * @return
+     * @throws SQLException
+     */
+    public Note getNote(long rowID) throws SQLException {
+        Cursor cursor = database.query(true, DatBassTable, new String[]{KEY_NOTE_ID, KEY_NOTE_TITLE, KEY_NOTE_BODY, KEY_NOTE_DATE_TIME}, KEY_NOTE_ID + "=" + rowID, null, null, null, null, null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        Note note = new Note();
+        note.setId(cursor.getInt(cursor.getColumnIndex(KEY_NOTE_ID)));
+        note.setTitle(cursor.getString(cursor.getColumnIndex(KEY_NOTE_TITLE)));
+        note.setNote(cursor.getString(cursor.getColumnIndex(KEY_NOTE_BODY)));
+        note.setDateTime(cursor.getLong(cursor.getColumnIndex(KEY_NOTE_DATE_TIME)));
+        return note;
+    }
+
+    /**
+     * Updates a note in the database
+     * @param rowID - id of the note to update
+     * @param name - the edited name
+     * @param note - the edited body of the note
+     * @return
+     */
+    public boolean updateNote(long rowID, String name, String note) {
+        ContentValues info = new ContentValues();
+        info.put(KEY_NOTE_TITLE, name);
+        info.put(KEY_NOTE_BODY, note);
+        return database.update(DatBassTable, info, KEY_NOTE_ID + "=" + rowID, null) > 0;
+    }
+
+
 }
