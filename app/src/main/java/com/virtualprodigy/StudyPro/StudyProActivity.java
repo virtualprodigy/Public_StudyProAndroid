@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.virtualprodigy.studypro.Adapters.NavigationDrawerAdapter;
+import com.virtualprodigy.studypro.Notes.NotesRecyclerViewFragment;
 import com.virtualprodigy.studypro.StudyTimer.StudyTimerFragment;
 import com.virtualprodigy.studypro.Utils.settingmenubuttons;
 
@@ -75,12 +76,21 @@ public class StudyProActivity extends AppCompatActivity {
 
         final Fragment studyTimer = new StudyTimerFragment();
         currentFragment = studyTimer;
-        //Add fragments
+        //Add study timer fragment
         fragmentManager
                 .beginTransaction()
                 .add(R.id.DisplayFragment,
                         currentFragment,
                         fragmentsEnum.studyTimer.toString())
+                .addToBackStack(null)
+                .commitAllowingStateLoss();
+
+        //Add note fragment
+        fragmentManager
+                .beginTransaction()
+                .add(R.id.DisplayFragment,
+                        new NotesRecyclerViewFragment(),
+                        fragmentsEnum.notes.toString())
                 .addToBackStack(null)
                 .commitAllowingStateLoss();
 
@@ -107,6 +117,17 @@ public class StudyProActivity extends AppCompatActivity {
                         break;
 
                     case 1:
+                        try {
+                            Log.i(TAG, "Switch to Note Fragment");
+                            currentFragEnum = fragmentsEnum.notes;
+                            fragmentManager.beginTransaction().hide(currentFragment)
+                                    .show(fragmentManager.findFragmentByTag(fragmentsEnum.notes.toString())).commitAllowingStateLoss();
+                            currentFragment = fragmentManager.findFragmentByTag(fragmentsEnum.notes.toString());
+                            navDrawer.setItemChecked(position, true);
+                        } catch (Exception e) {
+                            Log.e(TAG, e.getMessage(), e);
+                        }
+
                         break;
 
                     case 2:

@@ -10,9 +10,11 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.virtualprodigy.studypro.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Locale;
 
 /**
  * Created by virtualprodigyllc on 2/1/16.
@@ -73,7 +75,8 @@ public class Note implements Parcelable {
      * @return
      */
     public String getTime(Resources res) {
-        CharSequence formattedTime = DateFormat.format(res.getString(R.string.time_format), dateTime);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(res.getString(R.string.time_format), Locale.getDefault());
+        CharSequence formattedTime = simpleDateFormat.format(dateTime);
         return formattedTime.toString();
     }
 
@@ -153,4 +156,13 @@ public class Note implements Parcelable {
         this.dateTime = in.readLong();
     }
 
+    public static final Parcelable.Creator<Note> CREATOR = new Parcelable.Creator<Note>() {
+        public Note createFromParcel(Parcel source) {
+            return new Note(source);
+        }
+
+        public Note[] newArray(int size) {
+            return new Note[size];
+        }
+    };
 }
