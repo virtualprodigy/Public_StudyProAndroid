@@ -6,14 +6,14 @@
         <item>@string/nav_item_study_timer</item>
         <item>@string/nav_item_notes</item>
         <item>@string/nav_item_grade_calculator</item>
-        <item>@string/nav_item_info</item>
+        <item>@string/nav_item_settings</item>
     </string-array>
 
     <array name="nav_icons">
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/infobutton</item>
+        <item>@drawable/nav_icon_study_timer</item>
+        <item>@drawable/nav_icon_note</item>
+        <item>@drawable/nav_icon_grades</item>
+        <item>@drawable/nav_icon_settings</item>
     </array>
 
     <!--The values of the timer in 30min increments. 30min - 4hrs-->
