@@ -38,4 +38,24 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
+
+    <style name="noteCardDateText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="divider_bullet_point">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:text">@string/bullet_point</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
 </resources>

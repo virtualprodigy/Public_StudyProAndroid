@@ -3,5 +3,6 @@
     <!--study timer-->
     <dimen name="timer_circle_stroke">8dp</dimen>
     <dimen name="timer_circle_radius">14dp</dimen>
+    <dimen name="note_cardview_divider_space">16dp</dimen>
 
 </resources>

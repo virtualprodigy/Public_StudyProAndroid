@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@android:color/transparent"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:clickable="false"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false">
+
+            <LinearLayout
+                android:id="@+id/dates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@color/colorPrimary"
+                android:clickable="false"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:clickable="false">
+
+                    <TextView
+                        style="@style/divider_bullet_point"
+                        android:clickable="false" />
+
+                    <TextView
+                        android:id="@+id/dateDisplay"
+                        style="@style/noteCardDateText"
+                        android:clickable="false"
+                        tools:ignore="SpUsage"
+                        tools:text="@string/default_text" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:clickable="false">
+
+                    <TextView
+                        android:id="@+id/timeDisplay"
+                        style="@style/noteCardDateText"
+                        android:layout_gravity="left"
+                        android:clickable="false"
+                        tools:ignore="SpUsage"
+                        tools:text="@string/default_text" />
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/noteThumbnail"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/dates"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="4dp"
+                tools:src="@drawable/person_outline" />
+
+            <TextView
+                android:id="@+id/noteImageCount"
+                style="@style/noteCardDateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/noteThumbnail"
+                android:layout_alignRight="@+id/noteThumbnail"
+                android:layout_below="@+id/noteThumbnail"
+                android:layout_marginTop="4dp"
+                android:clickable="false"
+                android:gravity="top|center_horizontal"
+                android:paddingBottom="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage"
+                tools:text="@string/default_plus_99_more" />
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/noteThumbnail"
+                android:layout_below="@+id/dates"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@+id/noteThumbnail"
+                android:clickable="false"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:lines="1"
+                android:paddingEnd="16dp"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:text="@string/default_text"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                tools:ignore="SpUsage" />
+
+            <TextView
+                android:id="@+id/noteBodyPreview"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/titleTextView"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_toRightOf="@+id/noteThumbnail"
+                android:clickable="false"
+                android:ellipsize="end"
+                android:fadingEdge="horizontal"
+                android:gravity="left|top"
+                android:paddingBottom="8dp"
+                android:paddingEnd="16dp"
+                android:paddingRight="16dp"
+                android:text="@string/default_text"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12dp"
+                tools:ignore="SpUsage" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

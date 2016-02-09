@@ -9,7 +9,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-public class NotepadEditText  extends EditText {
+public class NotepadEditText extends EditText {
 	private Rect mRect;
 	private Paint mPaint;
 	private Context mContext;
