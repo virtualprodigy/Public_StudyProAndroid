@@ -22,7 +22,7 @@ import java.util.Locale;
 @DatabaseTable(tableName = "_NotesTable")
 public class Note implements Parcelable {
 
-    @DatabaseField(id = true, columnName = "_id")
+    @DatabaseField(generatedId = true, columnName = "_id")
     private int id;
 
     @DatabaseField(columnName = "_title")
@@ -144,7 +144,6 @@ public class Note implements Parcelable {
         dest.writeString(this.title);
         dest.writeString(this.note);
         dest.writeLong(this.dateTime);
-
     }
 
     protected Note(Parcel in) {

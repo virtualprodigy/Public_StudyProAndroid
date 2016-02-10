@@ -60,6 +60,8 @@
     <string name="default_text">SAMPLE TEXT</string>
     <string name="note_photo_count" formatted="false">+%s more</string>
     <string name="bullet_point">&#8226;</string>
+    <string name="save_menu_option">Save</string>
+    <string name="delete_menu_option">Delete</string>
 
     <!--    about xml-->
     <string name="aboutTitle">CramSlam</string>
