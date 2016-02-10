@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.clans.fab.FloatingActionMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fam"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom|right"
+    android:layout_marginBottom="8dp"
+    android:layout_marginRight="8dp"
+    fab:fab_colorNormal="@color/menu_fab_normal"
+    fab:fab_colorPressed="@color/menu_fab_pressed"
+    fab:fab_colorRipple="@color/menu_fab_ripple"
+    fab:menu_icon="@drawable/menu_icon"
+    tools:showIn="@layout/editor">
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/add_gallery_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/menu_fab_add_gallery"
+        fab:fab_colorNormal="@color/menu_fab_items_normal"
+        fab:fab_label="@string/menu_fab_add_image_gallery"
+        fab:fab_size="mini" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/add_camera_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/menu_fab_add_camera"
+        fab:fab_colorNormal="@color/menu_fab_items_normal"
+        fab:fab_label="@string/menu_fab_add_image_gallery"
+        fab:fab_size="mini" />
+
+</com.github.clans.fab.FloatingActionMenu>

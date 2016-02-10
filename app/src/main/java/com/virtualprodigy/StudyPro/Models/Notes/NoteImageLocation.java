@@ -15,7 +15,6 @@ public class NoteImageLocation implements Parcelable {
     @DatabaseField(id = true, columnName = "_id")
     private int id;
 
-    //memoir_id
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Note note;
 
