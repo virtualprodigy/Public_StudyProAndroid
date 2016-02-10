@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,7 +25,6 @@ import com.virtualprodigy.studypro.Utils.FileUtils;
 import com.virtualprodigy.studypro.ottoBus.OttoHelper;
 import com.virtualprodigy.studypro.ottoBus.busPostEvents.ExpandImageEvent;
 import com.virtualprodigy.studypro.ottoBus.busPostEvents.ImageDeleteStatus;
-import com.virtualprodigy.studypro.ottoBus.busPostEvents.RequestPhotoEvent;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -41,9 +40,9 @@ public class NotesImageAdapter extends RecyclerView.Adapter<NotesImageAdapter.No
     private Context context;
     private List<NoteImageLocation> noteImageLocations;
     private TextView emptyRecyclerView;
+    private RecyclerView recyclerView;
     protected int imageWidth;
     protected int imageHeight;
-
 
     @Inject
     OrmHelper helper;
@@ -55,15 +54,24 @@ public class NotesImageAdapter extends RecyclerView.Adapter<NotesImageAdapter.No
         this.noteImageLocations = noteImageLocations;
         this.emptyRecyclerView = emptyRecyclerView;
         ((StudyProApplication) ((Activity) context).getApplication()).getComponent().inject(this);
-        measureForImageSize();
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        this.recyclerView = recyclerView;
     }
 
     /**
      * Measures the size of a note image
      */
     private void measureForImageSize() {
-//        imageWidth =
-//        imageHeight =
+        Resources res = context.getResources();
+        int horizontalPadding = (int) (res.getDimension(R.dimen.note_image_item_horizontal_padding) * 2);
+        int verticalPadding = (int) (res.getDimension(R.dimen.note_image_item_vertical_padding) * 2);
+
+        imageWidth = recyclerView.getWidth() - horizontalPadding;
+        imageHeight =recyclerView.getHeight() - verticalPadding;
     }
 
     /**
@@ -106,6 +114,17 @@ public class NotesImageAdapter extends RecyclerView.Adapter<NotesImageAdapter.No
     public NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
                 .inflate(R.layout.note_image_item, parent, false);
+
+        //ensure all the recycler view items are the same size, taking up the full width of the
+        //bottom of the screen
+        if(imageHeight <=0 || imageWidth <= 0){
+            measureForImageSize();
+        }
+
+        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+        layoutParams.height = imageHeight;
+        layoutParams.width = imageWidth;
+        view.setLayoutParams(layoutParams);
         return new NoteViewHolder(view);
     }
 
@@ -154,58 +173,12 @@ public class NotesImageAdapter extends RecyclerView.Adapter<NotesImageAdapter.No
     }
 
     /**
-     * This method displays a dialog allowing the user to select a photo
-     * for their gallery or from the camera
-     */
-    private void getPhotoDialog() {
-        //create the list
-        String[] listOptions = context.getResources().getStringArray(R.array.selecting_photo_options);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_expandable_list_item_1, listOptions);
-
-        AlertDialog dialog = new AlertDialog.Builder(context)
-                .setTitle(context.getString(R.string.choose_photo_dialog_title))
-                .setAdapter(adapter, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0:
-                                //From the gallery
-                                getPhotoFromGallery();
-                                break;
-                            case 1:
-                                //from the camera
-                                getPhotoFromCamera();
-                                break;
-                        }
-                    }
-                })
-                .setCancelable(true)
-                .create();
-
-        dialog.show();
-    }
-
-    /**
      * This method opens a dialog and displays a larger version of the photo the user selected
      */
     private void displayLargerPhoto(NoteViewHolder holder, int position) {
         NoteImageLocation imageLocation = noteImageLocations.get(position);
         OttoHelper.getInstance().post(new ExpandImageEvent(holder.noteImage, imageLocation.getUri()));
 
-    }
-
-    /**
-     * Launches an intent chooser to get the photo from the gallery
-     */
-    private void getPhotoFromGallery() {
-        OttoHelper.getInstance().post(new RequestPhotoEvent(RequestPhotoEvent.ACTION_GALLERY));
-    }
-
-    /**
-     * Launches the camera and gets the user's photo
-     */
-    private void getPhotoFromCamera() {
-        OttoHelper.getInstance().post(new RequestPhotoEvent(RequestPhotoEvent.ACTION_CAMERA));
     }
 
     /**
