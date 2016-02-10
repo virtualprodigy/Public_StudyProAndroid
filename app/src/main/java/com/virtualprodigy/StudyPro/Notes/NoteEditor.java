@@ -271,7 +271,6 @@ public class NoteEditor extends AppCompatActivity implements TextWatcher {
         if (notesFam.isOpened()) {
             notesFam.close(true);
         }
-
         //Check if Note has a unique photo id, if not, create it
         Intent intent = new Intent();
         intent.setType("image/*");

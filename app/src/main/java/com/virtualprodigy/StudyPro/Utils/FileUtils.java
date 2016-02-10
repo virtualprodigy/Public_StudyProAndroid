@@ -74,7 +74,7 @@ public class FileUtils {
 
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(System.currentTimeMillis());
-        SimpleDateFormat dFormat = new SimpleDateFormat(context.getString(R.string.date_format));
+        SimpleDateFormat dFormat = new SimpleDateFormat(context.getString(R.string.image_time_format));
         //use the mimetype to get the file extension
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         String fileExtension = mimeTypeMap.getExtensionFromMimeType(mimeType);
