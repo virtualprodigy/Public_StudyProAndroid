@@ -49,6 +49,9 @@
  <!--Notes Fragment -->
  <color name="notes_fragment_background">#E2E2E1</color>
 
+ <!--images-->
+ <color name="image_golden_selected">#FFE9AB17</color>
+
  <!--Material Design Base Colors-->
  <color name="material_red">#f44336</color>
  <color name="material_pink">#e91e63</color>
