@@ -32,6 +32,8 @@
     <string name="stopbutton">Stop Studying</string>
     <string name="increase">More Time</string>
     <string name="decrease">Less Time</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_note">Note</string>
 
     <!-- folder file paths-->
     <string name="root_external_directory"> /Memoirs Of Me</string>

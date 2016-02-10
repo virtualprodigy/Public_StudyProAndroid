@@ -38,9 +38,6 @@
             android:name=".Utils.Prefs"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Tutorial"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.virtualprodigy.studypro.ChangeLog"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" />
