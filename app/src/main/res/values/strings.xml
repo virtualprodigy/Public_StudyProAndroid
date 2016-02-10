@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--general-->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
     <!--Eula-->
     <string name="eula">Eula&#160;</string>
@@ -29,6 +32,13 @@
     <string name="stopbutton">Stop Studying</string>
     <string name="increase">More Time</string>
     <string name="decrease">Less Time</string>
+
+    <!-- folder file paths-->
+    <string name="root_external_directory"> /Memoirs Of Me</string>
+    <string name="backups_external_directory">/Memoirs Of Me/backups</string>
+    <string name="backups_failed_imports_external_directory">/Memoirs Of Me/backups/failedImports</string>
+    <string name="images_external_directory">/Memoirs Of Me/.images</string>
+    <string name="dropbox_image_directory">/.images</string>
 
     <!--study timer fragment -->
     <string name="please_set_time">Please Select Your Amount Of Study Time</string>
@@ -62,8 +72,14 @@
     <string name="bullet_point">&#8226;</string>
     <string name="save_menu_option">Save</string>
     <string name="delete_menu_option">Delete</string>
+    <string name="notes_image_list_empty">No Images Added</string>
+    <string name="choose_photo_dialog_title">Select Photo</string>
+    <string name="choose_photo_existing">From Existing</string>
+    <string name="choose_photo_camera">From Camera</string>
+    <string name="image_delete_dialog_title">Delete Image</string>
+    <string name="image_delete_dialog_message">Are you sure?</string>
 
-    <!--    about xml-->
+        <!--  about xml-->
     <string name="aboutTitle">CramSlam</string>
     <string name="appName">CramSlam</string>
     <string name="companyName">VIRTUALPRODIGY LLC</string>

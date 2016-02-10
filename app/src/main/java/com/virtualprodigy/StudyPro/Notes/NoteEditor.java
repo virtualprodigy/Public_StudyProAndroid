@@ -1,29 +1,29 @@
 package com.virtualprodigy.studypro.Notes;
 
 import com.j256.ormlite.dao.Dao;
-import com.startapp.android.publish.Ad;
-import com.startapp.android.publish.AdEventListener;
+import com.virtualprodigy.studypro.Adapters.NotesImageAdapter;
 import com.virtualprodigy.studypro.Database.OrmHelper;
 import com.virtualprodigy.studypro.Models.Notes.Note;
+import com.virtualprodigy.studypro.Models.Notes.NoteImageLocation;
 import com.virtualprodigy.studypro.R;
-import com.virtualprodigy.studypro.StudyProActivity;
 import com.virtualprodigy.studypro.StudyProApplication;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NavUtils;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -36,14 +36,27 @@ public class NoteEditor extends AppCompatActivity {
     public static final String KEY_NOTE_BUNDLE = "note_bundle";
 
     private Note note;
+    private Context context;
 
+    protected
     @Bind(R.id.title)
     EditText noteTitle;
+    protected
     @Bind(R.id.body)
     NotepadEditText noteBody;
+    protected
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-   
+    protected
+    @Bind(R.id.noteImagesRecyclerView)
+    RecyclerView imageRecyclerView;
+    protected
+    @Bind(R.id.emptyImageList)
+    TextView emptyRecyclerView;
+    protected
+    @Bind(R.id.snackbarContainer)
+    CoordinatorLayout coordinatorLayout;
+
     @Inject
     OrmHelper ormHelper;
 
@@ -53,7 +66,7 @@ public class NoteEditor extends AppCompatActivity {
         setContentView(R.layout.editor);
         ((StudyProApplication) this.getApplication()).getComponent().inject(this);
         ButterKnife.bind(this);
-
+        this.context = this;
         setupToolbar();
     }
 
@@ -71,13 +84,13 @@ public class NoteEditor extends AppCompatActivity {
      * This method either populates the note from the bundle or sets up new note
      */
     private void populateNote() {
-        if(getIntent().hasExtra(KEY_NOTE_BUNDLE)) {
+        if (getIntent().hasExtra(KEY_NOTE_BUNDLE)) {
             Bundle bundle = getIntent().getBundleExtra(KEY_NOTE_BUNDLE);
             note = (Note) bundle.getParcelable(KEY_NOTE_PARCEL);
 
             noteTitle.setText(note.getTitle());
             noteBody.setText(note.getNote());
-        }else{
+        } else {
             note = new Note();
             note.setDateTime(System.currentTimeMillis());
         }
@@ -108,8 +121,8 @@ public class NoteEditor extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.menu_save:
-                    saveNote();
-                    finish();
+                saveNote();
+                finish();
                 return true;
             case R.id.menu_delete:
                 deleteNote();
@@ -121,9 +134,35 @@ public class NoteEditor extends AppCompatActivity {
     }
 
     /**
+     * Setup the recycler view for displaying the users
+     * photos
+     */
+    private void setupimageRecyclerView() {
+        imageRecyclerView.setHasFixedSize(false);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(context);
+        mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        imageRecyclerView.setLayoutManager(mLayoutManager);
+        imageRecyclerView.addItemDecoration(new NotesImageAdapter.HorizontalSpaceItemDecoration(context));
+
+        //put images in the adapter
+        ArrayList<NoteImageLocation> imageLocations = getNoteImages();
+        imageRecyclerView.setAdapter(new NotesImageAdapter(context, imageLocations, emptyRecyclerView));
+    }
+
+    /**
+     * Returns the images locations for the current note
+     *
+     * @return
+     */
+    private ArrayList<NoteImageLocation> getNoteImages() {
+        //TODO fill stub
+        return new ArrayList<>();
+    }
+
+    /**
      * Saves or updates the note in the database
      */
-    private void saveNote(){
+    private void saveNote() {
         try {
             note.setTitle(noteTitle.getText().toString());
             note.setNote(noteBody.getText().toString());
@@ -137,7 +176,7 @@ public class NoteEditor extends AppCompatActivity {
     /**
      * Deletes the note from the db
      */
-    private void deleteNote(){
+    private void deleteNote() {
         try {
             Dao<Note, Integer> noteDao = ormHelper.getTypeDao(Note.class, Integer.class);
             noteDao.delete(note);

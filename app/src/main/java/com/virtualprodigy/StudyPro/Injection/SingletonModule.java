@@ -9,6 +9,7 @@ import com.virtualprodigy.studypro.BuildConfig;
 import com.virtualprodigy.studypro.Database.OrmHelper;
 import com.virtualprodigy.studypro.StudyProApplication;
 import com.virtualprodigy.studypro.StudyTimer.TimedBreaks;
+import com.virtualprodigy.studypro.Utils.FileUtils;
 import com.virtualprodigy.studypro.services.RetrofitService;
 
 import javax.inject.Singleton;
@@ -72,6 +73,12 @@ public class SingletonModule {
     @Singleton
     TimedBreaks provideTimedBreaks(){
         return  new TimedBreaks(context);
+    }
+
+    @Provides
+    @Singleton
+    FileUtils provideFileUtils(){
+        return new FileUtils(context);
     }
 
 }

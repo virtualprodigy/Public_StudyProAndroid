@@ -27,4 +27,11 @@
         <item>12600000</item>
         <item>14400000</item>
     </string-array>
+
+    <!--Notes fragment-->
+    <!-- photo options -->
+    <string-array name="selecting_photo_options">
+        <item>@string/choose_photo_existing</item>
+        <item>@string/choose_photo_camera</item>
+    </string-array>
 </resources>

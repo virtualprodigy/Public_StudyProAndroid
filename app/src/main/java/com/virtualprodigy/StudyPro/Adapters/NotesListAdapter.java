@@ -80,7 +80,7 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
 
         int imageCount = note.getImageCount();
         if (imageCount == 0) {
-            Picasso.with(context).load(R.drawable.person_outline).fit().into(holder.noteImageThumb);
+            Picasso.with(context).load(R.drawable.image_icon).fit().into(holder.noteImageThumb);
         } else {
             imageCount = imageCount > 1 ? imageCount - 1 : 0;
             ArrayList<NoteImageLocation> imageLocations = note.getNoteImageLocation();
@@ -88,7 +88,7 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
                 NoteImageLocation imageLocation = imageLocations.get(0);
                 Picasso.with(context).load(imageLocation.getUri()).fit().centerCrop().into(holder.noteImageThumb);
             } else {
-                Picasso.with(context).load(R.drawable.person_outline).fit().into(holder.noteImageThumb);
+                Picasso.with(context).load(R.drawable.image_icon).fit().into(holder.noteImageThumb);
                 Log.e(TAG, "Error loading thumb image location " + (imageLocations != null ? imageLocations.get(0) : " null array"));
             }
         }

@@ -1,5 +1,6 @@
 package com.virtualprodigy.studypro.Injection;
 
+import com.virtualprodigy.studypro.Adapters.NotesImageAdapter;
 import com.virtualprodigy.studypro.Notes.NoteEditor;
 import com.virtualprodigy.studypro.Notes.NotesRecyclerViewFragment;
 import com.virtualprodigy.studypro.StudyProActivity;
@@ -23,4 +24,5 @@ public interface StudyProComponent {
     void inject(TimedBreaks timedBreaks);
     void inject(NotesRecyclerViewFragment notesRecyclerViewFragment);
     void inject(NoteEditor noteEditor);
+    void inject(NotesImageAdapter notesImageAdapter);
 }

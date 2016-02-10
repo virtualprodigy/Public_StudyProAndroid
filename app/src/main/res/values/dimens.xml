@@ -4,5 +4,6 @@
     <dimen name="timer_circle_stroke">8dp</dimen>
     <dimen name="timer_circle_radius">14dp</dimen>
     <dimen name="note_cardview_divider_space">16dp</dimen>
+    <dimen name="note_images_horizontal_divider_space">8dp</dimen>
 
 </resources>
