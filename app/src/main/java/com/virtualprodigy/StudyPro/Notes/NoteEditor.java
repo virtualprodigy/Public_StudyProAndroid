@@ -1,5 +1,6 @@
 package com.virtualprodigy.studypro.Notes;
 
+import com.github.clans.fab.FloatingActionMenu;
 import com.j256.ormlite.dao.Dao;
 import com.squareup.otto.Subscribe;
 import com.squareup.picasso.Callback;
@@ -37,6 +38,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,7 +63,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class NoteEditor extends AppCompatActivity {
+public class NoteEditor extends AppCompatActivity implements TextWatcher {
     private final String TAG = this.getClass().getSimpleName();
     public static final String KEY_NOTE_PARCEL = "note_parcel";
     public static final String KEY_NOTE_BUNDLE = "note_bundle";
@@ -75,8 +78,10 @@ public class NoteEditor extends AppCompatActivity {
     //expanding the imageview
     private Animator expandImageAnimator;
     private int shortAnimatorDuration;
-    /**flaggs wheter the note has been modified*/
-    private boolean pageEdited = false;
+    /**
+     * flaggs wheter the note has been modified
+     */
+    private boolean noteEdited = false;
 
     protected
     @Bind(R.id.title)
@@ -97,8 +102,13 @@ public class NoteEditor extends AppCompatActivity {
     @Bind(R.id.snackbarContainer)
     CoordinatorLayout coordinatorLayout;
 
-    protected @Bind(R.id.expanded_image)
+    protected
+    @Bind(R.id.expanded_image)
     ImageView expandedImage;
+
+    protected
+    @Bind(R.id.fam)
+    FloatingActionMenu notesFam;
 
     @Inject
     OrmHelper ormHelper;
@@ -114,6 +124,13 @@ public class NoteEditor extends AppCompatActivity {
         this.context = this;
         setupToolbar();
         setupimageRecyclerView();
+
+        //      sets the floating action menu to close when you click outside of it's area
+        notesFam.setClosedOnTouchOutside(true);
+
+        //add text change listener to edittexts to know when note is edited
+        noteTitle.addTextChangedListener(this);
+        noteBody.addTextChangedListener(this);
     }
 
     /**
@@ -179,6 +196,22 @@ public class NoteEditor extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        noteEdited = true;
+
+    }
+
     /**
      * Setup the recycler view for displaying the users
      * photos
@@ -215,7 +248,7 @@ public class NoteEditor extends AppCompatActivity {
     public void receiveImageDeleteStatus(final ImageDeleteStatus status) {
         if (status.status) {
             Snackbar.make(coordinatorLayout, R.string.image_delete_successful, Snackbar.LENGTH_LONG).show();
-            pageEdited = true;
+            noteEdited = true;
             //Java pass by reference updates the list in the note
         } else {
             Snackbar
@@ -235,6 +268,10 @@ public class NoteEditor extends AppCompatActivity {
      */
     @OnClick(R.id.add_gallery_image)
     public void onClickAddGalleryImage() {
+        if (notesFam.isOpened()) {
+            notesFam.close(true);
+        }
+
         //Check if Note has a unique photo id, if not, create it
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -247,6 +284,10 @@ public class NoteEditor extends AppCompatActivity {
      */
     @OnClick(R.id.add_camera_image)
     public void onClickAddCameraImage() {
+        if (notesFam.isOpened()) {
+            notesFam.close(true);
+        }
+
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(context.getPackageManager()) != null) {
             //provide the file for the image
@@ -360,7 +401,7 @@ public class NoteEditor extends AppCompatActivity {
         note.setNoteImageLocation(noteImageLocations);
 
         //flag the note as updated
-        pageEdited = true;
+        noteEdited = true;
 
         //check if the file used for the camera loaded. if so, clear it
         if (cameraImageFile != null) {
@@ -564,13 +605,15 @@ public class NoteEditor extends AppCompatActivity {
      * Saves or updates the note in the database
      */
     private void saveNote() {
-        try {
-            note.setTitle(noteTitle.getText().toString());
-            note.setNote(noteBody.getText().toString());
-            Dao<Note, Integer> noteDao = ormHelper.getTypeDao(Note.class, Integer.class);
-            noteDao.createOrUpdate(note);
-        } catch (SQLException e) {
-            Log.e(TAG, "Failed to create/update the note", e);
+        if (noteEdited) {
+            try {
+                note.setTitle(noteTitle.getText().toString());
+                note.setNote(noteBody.getText().toString());
+                Dao<Note, Integer> noteDao = ormHelper.getTypeDao(Note.class, Integer.class);
+                noteDao.createOrUpdate(note);
+            } catch (SQLException e) {
+                Log.e(TAG, "Failed to create/update the note", e);
+            }
         }
     }
 

@@ -55,6 +55,7 @@
  <color name="menu_fab_pressed">#388e3c</color>
  <color name="menu_fab_ripple">#81c784</color>
  <color name="menu_fab_items_normal">#66bb6a</color>
+ <color name="menu_fab_items_pressed">@color/menu_fab_normal</color>
 
  <!--Material Design Base Colors-->
  <color name="material_red">#f44336</color>
