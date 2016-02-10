@@ -45,7 +45,6 @@ import com.squareup.otto.Subscribe;
 import com.virtualprodigy.studypro.StudyProApplication;
 import com.virtualprodigy.studypro.Utils.Prefs;
 import com.virtualprodigy.studypro.R;
-import com.virtualprodigy.studypro.Tutorial;
 import com.virtualprodigy.studypro.Utils.settingmenubuttons;
 import com.virtualprodigy.studypro.layouts.TimerDisplayLayout;
 import com.virtualprodigy.studypro.ottoBus.OttoHelper;
@@ -89,7 +88,6 @@ public class StudyTimerFragment extends Fragment {
 	TickReceive tickR = new TickReceive();
 	FinishReceive finR = new FinishReceive();
 	int TaskId;
-	static int displayTutorial;
 
 	private Intent startTimerService;
 
@@ -116,9 +114,6 @@ public class StudyTimerFragment extends Fragment {
 
 		View timer = new TextView(fragmentContext);
 
-        //displays a tutorial
-        displayTutorial();
-
         displayReflectedIggy();
 
         return view;
@@ -131,18 +126,6 @@ public class StudyTimerFragment extends Fragment {
         showingIggyReflected.setImageBitmap(createReflectedImage(BitmapFactory.decodeResource(getResources(), R.drawable.iggy)));
     }
 
-    /**
-     * Displays the tutorial
-     */
-    private void displayTutorial() {
-        tutorialPrefs = fragmentContext.getApplicationContext().getSharedPreferences("showHow", fragmentContext.MODE_PRIVATE);
-        displayTutorial = tutorialPrefs.getInt("showHow", 0);
-
-        if (displayTutorial == 0 ) {
-            Intent Guide = new Intent(fragmentContext, Tutorial.class);
-            startActivity(Guide);
-        }
-    }
 
     /**
      * Stops the the timer
@@ -233,10 +216,6 @@ public class StudyTimerFragment extends Fragment {
 		send.putExtra("IggyVisiable", IggyVisiable);
 		send.setAction("com.gtech.CramSlam.died");
 		fragmentContext.sendBroadcast(send);
-
-		SharedPreferences.Editor edit = tutorialPrefs.edit();
-		edit.putInt("showHow", displayTutorial);
-		edit.commit();
 	}
 
 	@Override

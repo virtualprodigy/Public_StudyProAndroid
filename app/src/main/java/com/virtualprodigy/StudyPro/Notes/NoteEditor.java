@@ -68,6 +68,7 @@ public class NoteEditor extends AppCompatActivity {
         ButterKnife.bind(this);
         this.context = this;
         setupToolbar();
+        setupimageRecyclerView();
     }
 
     /**
