@@ -51,6 +51,10 @@
 
  <!--images-->
  <color name="image_golden_selected">#FFE9AB17</color>
+ <color name="menu_fab_normal">@color/accent</color>
+ <color name="menu_fab_pressed">#388e3c</color>
+ <color name="menu_fab_ripple">#81c784</color>
+ <color name="menu_fab_items_normal">#66bb6a</color>
 
  <!--Material Design Base Colors-->
  <color name="material_red">#f44336</color>

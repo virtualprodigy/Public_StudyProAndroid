@@ -21,9 +21,9 @@
         android:layout_below="@+id/toolbar"
         android:background="@android:color/transparent"
         android:gravity="center_horizontal"
+        android:hint="@string/hint_title"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:hint="@string/hint_title"/>
+        android:textSize="24sp" />
 
     <View
         android:id="@+id/divider"
@@ -49,9 +49,9 @@
             android:background="@android:color/transparent"
             android:cursorVisible="true"
             android:gravity="top"
+            android:hint="@string/hint_note"
             android:scrollbars="vertical"
             android:textColor="@color/black"
-            android:hint="@string/hint_note"
             android:textSize="18sp" />
 
         <FrameLayout
@@ -79,6 +79,23 @@
                 android:scrollbars="vertical" />
         </FrameLayout>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/expanded_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/content_desc_expanded_image"
+        android:padding="30dp"
+        android:visibility="invisible" />
+
+    <include
+        layout="@layout/note_menu_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/snackbarContainer"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/snackbarContainer"

@@ -3,6 +3,7 @@
     <!--general-->
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="retry">Retry</string>
 
     <!--Eula-->
     <string name="eula">Eula&#160;</string>
@@ -34,12 +35,25 @@
     <string name="decrease">Less Time</string>
     <string name="hint_title">Title</string>
     <string name="hint_note">Note</string>
+    <string name="menu_fab_add_image_gallery">Add Gallery Image</string>
+    <string name="menu_fab_add_image_camera">Add Camera Image</string>
+
+    <!--note image-->
+    <string name="failed_adding_image">Failed adding image</string>
+    <string name="notes_image_list_empty">No Images Added</string>
+    <string name="camera_not_available">No Images Added</string>
+    <string name="camera_file_error">Camera error</string>
+    <string name="content_desc_expanded_image">An expanded view of the image</string>
+    <string name="image_delete_successful">Image deleted successfully</string>
+    <string name="image_delete_failed">Failed to delete image</string>
+    <string name="choose_photo_existing">From Existing</string>
+    <string name="choose_photo_camera">From Camera</string>
+    <string name="image_delete_dialog_title">Delete Image</string>
+    <string name="image_delete_dialog_message">Are you sure?</string>
 
     <!-- folder file paths-->
-    <string name="root_external_directory"> /Memoirs Of Me</string>
-    <string name="backups_external_directory">/Memoirs Of Me/backups</string>
-    <string name="backups_failed_imports_external_directory">/Memoirs Of Me/backups/failedImports</string>
-    <string name="images_external_directory">/Memoirs Of Me/.images</string>
+    <string name="root_external_directory"> /Study Pro</string>
+    <string name="images_external_directory">/Study Pro/.images</string>
     <string name="dropbox_image_directory">/.images</string>
 
     <!--study timer fragment -->
@@ -74,12 +88,7 @@
     <string name="bullet_point">&#8226;</string>
     <string name="save_menu_option">Save</string>
     <string name="delete_menu_option">Delete</string>
-    <string name="notes_image_list_empty">No Images Added</string>
     <string name="choose_photo_dialog_title">Select Photo</string>
-    <string name="choose_photo_existing">From Existing</string>
-    <string name="choose_photo_camera">From Camera</string>
-    <string name="image_delete_dialog_title">Delete Image</string>
-    <string name="image_delete_dialog_message">Are you sure?</string>
 
         <!--  about xml-->
     <string name="aboutTitle">CramSlam</string>
