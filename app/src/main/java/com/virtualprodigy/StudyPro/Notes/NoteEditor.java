@@ -12,6 +12,7 @@ import com.virtualprodigy.studypro.Models.Notes.NoteImageLocation;
 import com.virtualprodigy.studypro.R;
 import com.virtualprodigy.studypro.StudyProApplication;
 import com.virtualprodigy.studypro.Utils.FileUtils;
+import com.virtualprodigy.studypro.ottoBus.OttoHelper;
 import com.virtualprodigy.studypro.ottoBus.busPostEvents.ExpandImageEvent;
 import com.virtualprodigy.studypro.ottoBus.busPostEvents.ImageDeleteStatus;
 
@@ -131,6 +132,7 @@ public class NoteEditor extends AppCompatActivity implements TextWatcher {
         //add text change listener to edittexts to know when note is edited
         noteTitle.addTextChangedListener(this);
         noteBody.addTextChangedListener(this);
+
     }
 
     /**
@@ -162,7 +164,14 @@ public class NoteEditor extends AppCompatActivity implements TextWatcher {
     @Override
     protected void onResume() {
         super.onResume();
+        OttoHelper.getInstance().register(this);
         populateNote();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        OttoHelper.getInstance().unregister(this);
     }
 
     @Override

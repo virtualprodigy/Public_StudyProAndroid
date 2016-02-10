@@ -3,7 +3,11 @@
     <!--study timer-->
     <dimen name="timer_circle_stroke">8dp</dimen>
     <dimen name="timer_circle_radius">14dp</dimen>
+
+    <!--Notes fragment-->
     <dimen name="note_cardview_divider_space">16dp</dimen>
-    <dimen name="note_images_horizontal_divider_space">8dp</dimen>
+    <dimen name="note_images_horizontal_divider_space">4dp</dimen>
+    <dimen name="note_image_item_horizontal_padding">16dp</dimen>
+    <dimen name="note_image_item_vertical_padding">8dp</dimen>
 
 </resources>
