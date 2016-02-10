@@ -50,11 +50,11 @@
     <string name="choose_photo_camera">From Camera</string>
     <string name="image_delete_dialog_title">Delete Image</string>
     <string name="image_delete_dialog_message">Are you sure?</string>
+    <string name="image_time_format">MM dd yyyy hh:mm:ss a</string>
 
     <!-- folder file paths-->
     <string name="root_external_directory"> /Study Pro</string>
     <string name="images_external_directory">/Study Pro/.images</string>
-    <string name="dropbox_image_directory">/.images</string>
 
     <!--study timer fragment -->
     <string name="please_set_time">Please Select Your Amount Of Study Time</string>

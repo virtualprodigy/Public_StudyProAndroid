@@ -31,7 +31,7 @@
         android:src="@drawable/menu_fab_add_camera"
         fab:fab_colorNormal="@color/menu_fab_items_normal"
         fab:fab_colorPressed="@color/menu_fab_items_pressed"
-        fab:fab_label="@string/menu_fab_add_image_gallery"
+        fab:fab_label="@string/menu_fab_add_image_camera"
         fab:fab_size="mini" />
 
 </com.github.clans.fab.FloatingActionMenu>
