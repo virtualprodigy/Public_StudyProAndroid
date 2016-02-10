@@ -1,15 +1,26 @@
 package com.virtualprodigy.studypro.Notes;
 
 import com.j256.ormlite.dao.Dao;
+import com.startapp.android.publish.Ad;
+import com.startapp.android.publish.AdEventListener;
 import com.virtualprodigy.studypro.Database.OrmHelper;
 import com.virtualprodigy.studypro.Models.Notes.Note;
 import com.virtualprodigy.studypro.R;
+import com.virtualprodigy.studypro.StudyProActivity;
 import com.virtualprodigy.studypro.StudyProApplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 
 import java.sql.SQLException;
@@ -19,7 +30,7 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class NoteEditor extends Activity {
+public class NoteEditor extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
     public static final String KEY_NOTE_PARCEL = "note_parcel";
     public static final String KEY_NOTE_BUNDLE = "note_bundle";
@@ -30,6 +41,8 @@ public class NoteEditor extends Activity {
     EditText noteTitle;
     @Bind(R.id.body)
     NotepadEditText noteBody;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
    
     @Inject
     OrmHelper ormHelper;
@@ -40,8 +53,18 @@ public class NoteEditor extends Activity {
         setContentView(R.layout.editor);
         ((StudyProApplication) this.getApplication()).getComponent().inject(this);
         ButterKnife.bind(this);
-        
-        setTitle(R.string.note_editor_activity_title);
+
+        setupToolbar();
+    }
+
+    /**
+     * configs the toolbar
+     */
+    private void setupToolbar() {
+        toolbar.setTitle(R.string.note_editor_activity_title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     /**
@@ -67,9 +90,34 @@ public class NoteEditor extends Activity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    public void onBackPressed() {
+        super.onBackPressed();
         saveNote();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.notes_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            case R.id.menu_save:
+                    saveNote();
+                    finish();
+                return true;
+            case R.id.menu_delete:
+                deleteNote();
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     /**
@@ -83,6 +131,18 @@ public class NoteEditor extends Activity {
             noteDao.createOrUpdate(note);
         } catch (SQLException e) {
             Log.e(TAG, "Failed to create/update the note", e);
+        }
+    }
+
+    /**
+     * Deletes the note from the db
+     */
+    private void deleteNote(){
+        try {
+            Dao<Note, Integer> noteDao = ormHelper.getTypeDao(Note.class, Integer.class);
+            noteDao.delete(note);
+        } catch (SQLException e) {
+            Log.e(TAG, "Failed to delete the note", e);
         }
     }
 
