@@ -24,8 +24,13 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -398,6 +403,7 @@ public class NoteEditor extends AppCompatActivity implements TextWatcher {
      * It does not save it to orm. That is done with the rest of the saving logic
      */
     private void addImageToNotesCollection(File noteImage) {
+        checkImageOrientation(noteImage);
         ArrayList<NoteImageLocation> noteImageLocations = note.getNoteImageLocation();
         if (noteImageLocations == null) {
             noteImageLocations = new ArrayList<>();
@@ -419,6 +425,32 @@ public class NoteEditor extends AppCompatActivity implements TextWatcher {
         //updated adapter
         NotesImageAdapter adapter = (NotesImageAdapter) imageRecyclerView.getAdapter();
         adapter.setNoteImageLocations(noteImageLocations);
+    }
+
+    /**
+     * This method will roate the image to landscape if it isn't already
+     * @param imageFile
+     */
+    private void checkImageOrientation(File imageFile){
+        //TODO rotate with this code or with Picasso and when do I want to do a rotate, should I check the image bounds?
+//        BitmapFactory.Options bounds = new BitmapFactory.Options();
+//        bounds.inJustDecodeBounds = true;
+//        BitmapFactory.decodeFile(imageFile, bounds);
+//
+//        BitmapFactory.Options opts = new BitmapFactory.Options();
+//        Bitmap bm = BitmapFactory.decodeFile(imageFile, opts);
+//        ExifInterface exif = new ExifInterface(imageFile);
+//        String orientString = exif.getAttribute(ExifInterface.TAG_ORIENTATION);
+//        int orientation = orientString != null ? Integer.parseInt(orientString) :  ExifInterface.ORIENTATION_NORMAL;
+//
+//        int rotationAngle = 0;
+//        if (orientation == ExifInterface.ORIENTATION_ROTATE_90) rotationAngle = 90;
+//        if (orientation == ExifInterface.ORIENTATION_ROTATE_180) rotationAngle = 180;
+//        if (orientation == ExifInterface.ORIENTATION_ROTATE_270) rotationAngle = 270;
+//
+//        Matrix matrix = new Matrix();
+//        matrix.setRotate(rotationAngle, (float) bm.getWidth() / 2, (float) bm.getHeight() / 2);
+//        Bitmap rotatedBitmap = Bitmap.createBitmap(bm, 0, 0, bounds.outWidth, bounds.outHeight, matrix, true);
     }
 
     /**
