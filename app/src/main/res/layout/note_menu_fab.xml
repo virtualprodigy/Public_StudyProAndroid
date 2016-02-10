@@ -8,9 +8,9 @@
     android:layout_gravity="bottom|right"
     android:layout_marginBottom="8dp"
     android:layout_marginRight="8dp"
-    fab:fab_colorNormal="@color/menu_fab_normal"
-    fab:fab_colorPressed="@color/menu_fab_pressed"
-    fab:fab_colorRipple="@color/menu_fab_ripple"
+    fab:menu_colorNormal="@color/menu_fab_normal"
+    fab:menu_colorPressed="@color/menu_fab_pressed"
+    fab:menu_colorRipple="@color/menu_fab_ripple"
     fab:menu_icon="@drawable/menu_icon"
     tools:showIn="@layout/editor">
 
@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/menu_fab_add_gallery"
         fab:fab_colorNormal="@color/menu_fab_items_normal"
+        fab:fab_colorPressed="@color/menu_fab_items_pressed"
         fab:fab_label="@string/menu_fab_add_image_gallery"
         fab:fab_size="mini" />
 
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/menu_fab_add_camera"
         fab:fab_colorNormal="@color/menu_fab_items_normal"
+        fab:fab_colorPressed="@color/menu_fab_items_pressed"
         fab:fab_label="@string/menu_fab_add_image_gallery"
         fab:fab_size="mini" />
 
