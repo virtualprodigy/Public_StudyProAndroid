@@ -1,30 +1,24 @@
 package com.virtualprodigy.studypro.Database;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.virtualprodigy.studypro.Models.Note;
+import com.virtualprodigy.studypro.Models.Notes.Note;
+import com.virtualprodigy.studypro.Models.Notes.NoteImageLocation;
 import com.virtualprodigy.studypro.R;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by virtualprodigyllc on 02/01/16.
  */
 public class OrmHelper extends OrmLiteSqliteOpenHelper {
-    //relics from the old db. Will slow remove later. I don't want fix what isn't broken(aka break something...too much happening in this current update)
     private final static String DB_Name = "studyProDatabase";
-    private final String DB_Table_Memoirs = "notesTable";
 
     private final String TAG = this.getClass().getSimpleName();
     private Context context;
@@ -40,6 +34,7 @@ public class OrmHelper extends OrmLiteSqliteOpenHelper {
         try {
             Log.i(TAG, "Creating database");
             TableUtils.createTable(connectionSource, Note.class);
+            TableUtils.createTable(connectionSource, NoteImageLocation.class);
         } catch (SQLException e) {
             Log.e(TAG, "Error creating database", e);
         }
@@ -58,4 +53,5 @@ public class OrmHelper extends OrmLiteSqliteOpenHelper {
         return getDao(classType);
     }
 
+//    TODO use a cursor for the adapter
 }

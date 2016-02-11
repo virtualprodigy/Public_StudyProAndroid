@@ -28,7 +28,8 @@ public class TimedBreaks {
     private Context context;
     private StudyDurations studyDurations;
 
-    @Inject Gson gson;
+    @Inject
+    Gson gson;
 
     public TimedBreaks(Context context) {
         this.context = context;
@@ -90,7 +91,7 @@ public class TimedBreaks {
                 }
             }
 
-        jsonReader.endObject();
+            jsonReader.endObject();
         } catch (Exception e) {
         } finally {
             try {
@@ -107,27 +108,33 @@ public class TimedBreaks {
      * This method is called when the timer is started to schedule the alarms
      * and the break notification
      */
-    public void scheduleAlarmPlusBreaks(){
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Calendar calendar = Calendar.getInstance();
+    public void scheduleAlarmPlusBreaks() {
+//        TODO finish logic to create alarms
+//        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+//        Calendar calendar = Calendar.getInstance();
+//
+//        calendar.set(Calendar.HOUR_OF_DAY, alarmTimePicker.getCurrentHour());
+//        calendar.set(Calendar.MINUTE, alarmTimePicker.getCurrentMinute());
+//        Intent myIntent = new Intent(AlarmActivity.this, AlarmReceiver.class);
+//        pendingIntent = PendingIntent.getBroadcast(AlarmActivity.this, 0, myIntent, 0);
+//        alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+//
+//
+//        else{
+//            alarmManager.cancel(pendingIntent);
+//            setAlarmText("");
+//            Log.d("MyActivity", "Alarm Off");
+//        }
 
-        calendar.set(Calendar.HOUR_OF_DAY, alarmTimePicker.getCurrentHour());
-        calendar.set(Calendar.MINUTE, alarmTimePicker.getCurrentMinute());
-        Intent myIntent = new Intent(AlarmActivity.this, AlarmReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(AlarmActivity.this, 0, myIntent, 0);
-        alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
-    } else {
-        alarmManager.cancel(pendingIntent);
-        setAlarmText("");
-        Log.d("MyActivity", "Alarm Off");
     }
 
     /**
      * Converts the duration time to minutes
+     *
      * @return
      */
-    private int convertTimeMsToMins(){
-        
+    private int convertTimeMsToMins() {
 
+        return -1;
     }
 }

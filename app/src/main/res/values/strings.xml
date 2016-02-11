@@ -53,6 +53,10 @@
     <string name="breakring_title">Alarm Sound On Break Alert</string>
     <string name="breakring_summary">Plays an alert sound when break starts/ends</string>
 
+    <!--Notes Fragment -->
+    <string name="time_format">hh:mm:ss</string>
+    <string name="date_format">MM/dd/yyyy</string>
+
     <!--    about xml-->
     <string name="aboutTitle">CramSlam</string>
     <string name="appName">CramSlam</string>
